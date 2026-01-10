@@ -24,7 +24,7 @@
 }
 
 body {
-    font-family: 'Garamond', 'Palatino', 'Book Antiqua', 'Georgia', serif;
+    font-family: 'IM Fell DW Pica', 'Garamond', 'Palatino', 'Book Antiqua', 'Georgia', serif;
     background: radial-gradient(ellipse at center, #3d2849 0%, #1f1426 100%);
     background-attachment: fixed;
     color: var(--text-dark);
@@ -99,9 +99,9 @@ header h1 {
     text-shadow: 1px 1px 0px rgba(212, 175, 55, 0.3);
     letter-spacing: 8px;
     margin-bottom: 10px;
-    font-weight: 700;
+    font-weight: 900;
     text-transform: uppercase;
-    font-family: 'Georgia', serif;
+    font-family: 'Cinzel', 'Georgia', serif;
 }
 
 .tagline {
@@ -153,6 +153,7 @@ header h1 {
     margin-bottom: 15px;
     font-weight: 600;
     letter-spacing: 2px;
+    font-family: 'Cinzel', 'Georgia', serif;
 }
 
 .welcome-text p {
@@ -235,6 +236,7 @@ section h2 {
     font-weight: 700;
     text-align: left;
     text-shadow: none;
+    font-family: 'Cinzel', 'Georgia', serif;
 }
 
 section h2::before,
@@ -325,6 +327,7 @@ section p:first-of-type::first-letter {
     letter-spacing: 1px;
     font-weight: 700;
     text-transform: none;
+    font-family: 'Cinzel', 'Georgia', serif;
 }
 
 .resource-card p {

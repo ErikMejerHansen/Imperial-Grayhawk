@@ -67,7 +67,7 @@ optimize_png() {
     
     if [ "$HAS_PNGQUANT" = true ]; then
         # Use pngquant for better PNG compression
-        pngquant --quality=$PNG_QUALITY --force --output "$output_file" "$input_file" 2>/dev/null || {
+        pngquant --quality="$PNG_QUALITY" --force --output "$output_file" "$input_file" 2>/dev/null || {
             # Fallback to ImageMagick if pngquant fails
             convert "$input_file" -strip -quality 85 "$output_file"
         }
@@ -92,7 +92,7 @@ optimize_jpg() {
     echo -e "  Processing: ${input_file}"
     
     # Use ImageMagick to optimize JPG
-    convert "$input_file" -strip -quality $QUALITY -sampling-factor 4:2:0 -interlace Plane "$output_file"
+    convert "$input_file" -strip -quality "$QUALITY" -sampling-factor 4:2:0 -interlace Plane "$output_file"
     
     local new_size=$(get_file_size "$output_file")
     if [ "$original_size" -gt 0 ]; then

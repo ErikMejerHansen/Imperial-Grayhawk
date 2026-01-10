@@ -37,7 +37,7 @@ jobs:
       - name: Install ImageMagick
         run: |
           sudo apt-get update
-          sudo apt-get install -y imagemagick
+          sudo apt-get install -y imagemagick bc
           
       - name: Install pngquant
         run: |
@@ -51,9 +51,13 @@ jobs:
       - name: Generate optimization report
         id: report
         run: |
-          # Calculate sizes
-          ORIGINAL_SIZE=$(find . -type f \( -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.jpeg" -o -name "*.JPEG" \) ! -path "./optimized-assets/*" ! -path "./.git/*" -exec stat -c%s {} + | awk '{s+=$1} END {print s}')
-          OPTIMIZED_SIZE=$(find optimized-assets -type f \( -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.jpeg" -o -name "*.JPEG" \) -exec stat -c%s {} + | awk '{s+=$1} END {print s}')
+          # Calculate sizes (with error handling for empty results)
+          ORIGINAL_SIZE=$(find . -type f \( -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.jpeg" -o -name "*.JPEG" \) ! -path "./optimized-assets/*" ! -path "./.git/*" -exec stat -c%s {} + 2>/dev/null | awk '{s+=$1} END {print s+0}')
+          OPTIMIZED_SIZE=$(find optimized-assets -type f \( -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.jpeg" -o -name "*.JPEG" \) -exec stat -c%s {} + 2>/dev/null | awk '{s+=$1} END {print s+0}')
+          
+          # Default to 0 if empty
+          ORIGINAL_SIZE=${ORIGINAL_SIZE:-0}
+          OPTIMIZED_SIZE=${OPTIMIZED_SIZE:-0}
           
           # Calculate reduction
           if [ "$ORIGINAL_SIZE" -gt 0 ]; then

@@ -24,19 +24,15 @@ echo ""
 
 # Check if ImageMagick is installed
 if ! command -v convert &> /dev/null; then
-    echo -e "${YELLOW}Warning: ImageMagick not found. Attempting to install...${NC}"
-    
-    # Try to install ImageMagick
-    if command -v apt-get &> /dev/null; then
-        sudo apt-get update && sudo apt-get install -y imagemagick
-    elif command -v yum &> /dev/null; then
-        sudo yum install -y imagemagick
-    elif command -v brew &> /dev/null; then
-        brew install imagemagick
-    else
-        echo "Error: Could not install ImageMagick. Please install it manually."
-        exit 1
-    fi
+    echo -e "${YELLOW}Error: ImageMagick not found. Please install it first.${NC}"
+    echo ""
+    echo "On Ubuntu/Debian:"
+    echo "  sudo apt-get install imagemagick pngquant"
+    echo ""
+    echo "On macOS:"
+    echo "  brew install imagemagick pngquant"
+    echo ""
+    exit 1
 fi
 
 # Check if pngquant is available (optional, for better PNG compression)
@@ -54,11 +50,18 @@ mkdir -p "$OUTPUT_DIR"
 mkdir -p "$OUTPUT_DIR/assets"
 mkdir -p "$OUTPUT_DIR/maps"
 
+# Function to get file size (cross-platform)
+get_file_size() {
+    local file="$1"
+    # Try Linux first (stat -c%s), then fall back to macOS/BSD (stat -f%z)
+    stat -c%s "$file" 2>/dev/null || stat -f%z "$file" 2>/dev/null
+}
+
 # Function to optimize PNG files
 optimize_png() {
     local input_file="$1"
     local output_file="$2"
-    local original_size=$(stat -f%z "$input_file" 2>/dev/null || stat -c%s "$input_file")
+    local original_size=$(get_file_size "$input_file")
     
     echo -e "  Processing: ${input_file}"
     
@@ -73,25 +76,29 @@ optimize_png() {
         convert "$input_file" -strip -quality 85 "$output_file"
     fi
     
-    local new_size=$(stat -f%z "$output_file" 2>/dev/null || stat -c%s "$output_file")
-    local reduction=$(( (original_size - new_size) * 100 / original_size ))
-    echo -e "  ${GREEN}✓ Saved: $(numfmt --to=iec-i --suffix=B $original_size) → $(numfmt --to=iec-i --suffix=B $new_size) (${reduction}% reduction)${NC}"
+    local new_size=$(get_file_size "$output_file")
+    if [ "$original_size" -gt 0 ]; then
+        local reduction=$(( (original_size - new_size) * 100 / original_size ))
+        echo -e "  ${GREEN}✓ Saved: $(numfmt --to=iec-i --suffix=B $original_size) → $(numfmt --to=iec-i --suffix=B $new_size) (${reduction}% reduction)${NC}"
+    fi
 }
 
 # Function to optimize JPG files
 optimize_jpg() {
     local input_file="$1"
     local output_file="$2"
-    local original_size=$(stat -f%z "$input_file" 2>/dev/null || stat -c%s "$input_file")
+    local original_size=$(get_file_size "$input_file")
     
     echo -e "  Processing: ${input_file}"
     
     # Use ImageMagick to optimize JPG
     convert "$input_file" -strip -quality $QUALITY -sampling-factor 4:2:0 -interlace Plane "$output_file"
     
-    local new_size=$(stat -f%z "$output_file" 2>/dev/null || stat -c%s "$output_file")
-    local reduction=$(( (original_size - new_size) * 100 / original_size ))
-    echo -e "  ${GREEN}✓ Saved: $(numfmt --to=iec-i --suffix=B $original_size) → $(numfmt --to=iec-i --suffix=B $new_size) (${reduction}% reduction)${NC}"
+    local new_size=$(get_file_size "$output_file")
+    if [ "$original_size" -gt 0 ]; then
+        local reduction=$(( (original_size - new_size) * 100 / original_size ))
+        echo -e "  ${GREEN}✓ Saved: $(numfmt --to=iec-i --suffix=B $original_size) → $(numfmt --to=iec-i --suffix=B $new_size) (${reduction}% reduction)${NC}"
+    fi
 }
 
 # Optimize root PNG files
@@ -152,7 +159,7 @@ optimized_total=0
 shopt -s nullglob
 for file in *.png *.PNG assets/*.png assets/*.PNG maps/*.png maps/*.PNG maps/*.jpg maps/*.JPG maps/*.jpeg maps/*.JPEG; do
     if [ -f "$file" ]; then
-        size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file")
+        size=$(get_file_size "$file")
         original_total=$((original_total + size))
     fi
 done
@@ -160,13 +167,13 @@ done
 # Calculate optimized size
 for file in "$OUTPUT_DIR"/*.png "$OUTPUT_DIR"/*.PNG "$OUTPUT_DIR"/assets/*.png "$OUTPUT_DIR"/assets/*.PNG "$OUTPUT_DIR"/maps/*.png "$OUTPUT_DIR"/maps/*.PNG "$OUTPUT_DIR"/maps/*.jpg "$OUTPUT_DIR"/maps/*.JPG "$OUTPUT_DIR"/maps/*.jpeg "$OUTPUT_DIR"/maps/*.JPEG; do
     if [ -f "$file" ]; then
-        size=$(stat -f%z "$file" 2>/dev/null || stat -c%s "$file")
+        size=$(get_file_size "$file")
         optimized_total=$((optimized_total + size))
     fi
 done
 shopt -u nullglob
 
-if [ $original_total -gt 0 ]; then
+if [ $original_total -gt 0 ] && [ $optimized_total -ge 0 ]; then
     total_reduction=$(( (original_total - optimized_total) * 100 / original_total ))
     echo -e "Total original size:  $(numfmt --to=iec-i --suffix=B $original_total)"
     echo -e "Total optimized size: $(numfmt --to=iec-i --suffix=B $optimized_total)"

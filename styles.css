@@ -232,59 +232,57 @@ section p:first-of-type::first-letter {
 
 /* Resource Grid (Maps & Handouts) */
 .resource-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 240px));
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
     margin-top: 30px;
-    justify-content: start;
 }
 
 .resource-card {
-    background: linear-gradient(135deg, var(--parchment-light) 0%, var(--parchment) 100%);
-    border: 2px solid var(--border-ornate);
-    border-left: 4px solid var(--deep-red);
-    padding: 20px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(139, 111, 71, 0.25);
+    padding: 20px 0;
     transition: all 0.3s ease;
-    box-shadow: 0 3px 10px var(--shadow);
-    position: relative;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 }
 
 .resource-card::before {
-    content: '❖';
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: var(--gold);
-    font-size: 1.2rem;
-    opacity: 0.25;
+    content: '•';
+    position: static;
+    color: var(--deep-red);
+    font-size: 1.5rem;
+    opacity: 0.6;
+    margin-right: 15px;
 }
 
 .resource-card:hover {
-    border-color: var(--gold);
-    border-left-color: var(--blood-red);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(107, 31, 31, 0.3);
-    background: linear-gradient(135deg, var(--parchment-light) 0%, var(--aged-gold) 100%);
+    background: rgba(212, 175, 55, 0.05);
+    border-bottom-color: var(--gold);
+    transform: none;
+    box-shadow: none;
+    padding-left: 10px;
 }
 
 .resource-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 8px;
+    font-size: 1.3rem;
+    margin-bottom: 5px;
     color: var(--text-dark);
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     font-weight: 700;
-    text-transform: uppercase;
+    text-transform: none;
 }
 
 .resource-card p {
     color: var(--text-aged);
-    margin-bottom: 15px;
+    margin-bottom: 0;
     font-size: 0.95rem;
     font-style: italic;
     line-height: 1.5;
-    flex-grow: 1;
+    flex-grow: 0;
 }
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px var(--shadow);
@@ -316,25 +314,30 @@ section p:first-of-type::first-letter {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     padding: 0;
-    background: linear-gradient(to bottom, var(--blood-red) 0%, var(--deep-red) 100%);
+    background: var(--deep-red);
     color: var(--parchment-light);
     text-decoration: none;
     border: 2px solid var(--border-ornate);
     transition: all 0.3s ease;
-    font-size: 1.2rem;
-    box-shadow: 0 2px 8px var(--shadow);
-    align-self: flex-start;
+    font-size: 1rem;
+    box-shadow: 0 2px 6px var(--shadow);
+    flex-shrink: 0;
+    border-radius: 2px;
 }
 
 .download-btn:hover {
-    background: linear-gradient(to bottom, var(--deep-red) 0%, var(--blood-red) 100%);
+    background: var(--blood-red);
     border-color: var(--gold);
     color: var(--gold-bright);
-    box-shadow: 0 4px 12px rgba(139, 46, 46, 0.5);
+    box-shadow: 0 3px 10px rgba(139, 46, 46, 0.4);
     transform: translateY(-2px);
+}
+
+.resource-info {
+    flex: 1;
 }
 
 /* Session Notes */
@@ -479,8 +482,19 @@ footer {
         letter-spacing: 2px;
     }
     
-    .resource-grid {
-        grid-template-columns: 1fr;
+    .resource-card {
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 15px 0;
+    }
+    
+    .resource-card::before {
+        margin-right: 10px;
+        font-size: 1.2rem;
+    }
+    
+    .resource-card::after {
+        font-size: 1rem;
     }
     
     .header-logo {

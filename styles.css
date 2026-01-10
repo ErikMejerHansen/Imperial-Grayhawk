@@ -271,6 +271,15 @@ section p:first-of-type::first-letter {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.resource-card:link,
+.resource-card:visited,
+.resource-card:active {
+    text-decoration: none;
+    color: inherit;
 }
 
 .resource-card::before {

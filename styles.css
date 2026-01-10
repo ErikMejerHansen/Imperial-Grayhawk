@@ -1,9 +1,9 @@
 /* Imperial Grayhawk - Warhammer Fantasy Inspired Styling */
 
 :root {
-    --parchment-light: #f5e6d3;
-    --parchment: #e8d5b7;
-    --parchment-dark: #d4b896;
+    --parchment-light: #f7e9d0;
+    --parchment: #ead5b0;
+    --parchment-dark: #dcc49a;
     --aged-gold: #c9a961;
     --aged-brown: #4a3520;
     --wood-brown: #5c4a32;
@@ -38,8 +38,12 @@ body {
     max-width: 1100px;
     margin: 0 auto;
     background: var(--parchment-light);
-    box-shadow: 0 0 80px rgba(0, 0, 0, 0.7);
+    box-shadow: 
+        0 0 100px rgba(0, 0, 0, 0.9),
+        0 20px 60px rgba(0, 0, 0, 0.7),
+        inset 0 0 3px rgba(0, 0, 0, 0.1);
     position: relative;
+    filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.5));
 }
 
 .ornate-border {
@@ -49,7 +53,7 @@ body {
     background: var(--parchment-light);
     background-image: 
         url('assets/watermark.png'),
-        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="5" seed="2"/></filter><rect width="300" height="300" fill="%23e8d5b7"/><rect width="300" height="300" filter="url(%23noise)" opacity="0.08"/></svg>');
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="6" seed="2"/></filter><rect width="300" height="300" fill="%23ead5b0"/><rect width="300" height="300" filter="url(%23noise)" opacity="0.15"/></svg>');
     background-position: center center, 0 0;
     background-repeat: no-repeat, repeat;
     background-size: 50%, auto;

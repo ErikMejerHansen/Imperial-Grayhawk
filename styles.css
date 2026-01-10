@@ -25,7 +25,7 @@
 
 body {
     font-family: 'Garamond', 'Palatino', 'Book Antiqua', 'Georgia', serif;
-    background: radial-gradient(ellipse at center, #8b7355 0%, #5c4a32 100%);
+    background: radial-gradient(ellipse at center, #3d2849 0%, #1f1426 100%);
     background-attachment: fixed;
     color: var(--text-dark);
     line-height: 1.8;
@@ -39,6 +39,7 @@ body {
     margin: 0 auto;
     background: var(--parchment-light);
     box-shadow: 0 0 80px rgba(0, 0, 0, 0.7);
+    position: relative;
 }
 
 .ornate-border {
@@ -46,7 +47,29 @@ body {
     border-width: 60px;
     border-style: solid;
     background: var(--parchment-light);
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="5" seed="2"/></filter><rect width="300" height="300" fill="%23e8d5b7"/><rect width="300" height="300" filter="url(%23noise)" opacity="0.08"/></svg>');
+    background-image: 
+        url('assets/watermark.png'),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="5" seed="2"/></filter><rect width="300" height="300" fill="%23e8d5b7"/><rect width="300" height="300" filter="url(%23noise)" opacity="0.08"/></svg>');
+    background-position: center center, 0 0;
+    background-repeat: no-repeat, repeat;
+    background-size: 50%, auto;
+    background-blend-mode: color-burn, normal;
+}
+
+.ornate-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('assets/watermark.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    opacity: 0.04;
+    pointer-events: none;
+    mix-blend-mode: multiply;
 }
 
 .container {
@@ -57,8 +80,8 @@ body {
 /* Header */
 header {
     text-align: center;
-    padding: 0 0 40px 0;
-    margin-bottom: 50px;
+    padding: 0 0 30px 0;
+    margin-bottom: 35px;
     background: transparent;
     border: none;
     border-bottom: 2px solid rgba(139, 111, 71, 0.2);
@@ -120,14 +143,14 @@ header h1 {
 /* Welcome Text */
 .welcome-text {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 45px;
     padding: 0 60px;
 }
 
 .welcome-text h2 {
     font-size: 2.2rem;
     color: var(--deep-red);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-weight: 600;
     letter-spacing: 2px;
 }
@@ -190,7 +213,7 @@ nav a:hover {
 
 /* Sections */
 section {
-    margin-bottom: 50px;
+    margin-bottom: 35px;
     padding: 0;
     background: transparent;
     border: none;
@@ -203,12 +226,12 @@ section::before {
 
 section h2 {
     font-size: 2rem;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     color: var(--deep-red);
     text-transform: uppercase;
     letter-spacing: 3px;
     border-bottom: 2px solid rgba(139, 111, 71, 0.3);
-    padding-bottom: 15px;
+    padding-bottom: 12px;
     font-weight: 700;
     text-align: left;
     text-shadow: none;
@@ -234,8 +257,8 @@ section p:first-of-type::first-letter {
 .resource-grid {
     display: flex;
     flex-direction: column;
-    gap: 25px;
-    margin-top: 30px;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 .resource-card {
@@ -257,6 +280,15 @@ section p:first-of-type::first-letter {
     font-size: 1.5rem;
     opacity: 0.6;
     margin-right: 15px;
+    transition: all 0.3s ease;
+}
+
+.resource-card::after {
+    content: '⬇';
+    color: var(--deep-red);
+    font-size: 1.2rem;
+    opacity: 0.5;
+    transition: all 0.3s ease;
 }
 
 .resource-card:hover {
@@ -265,6 +297,16 @@ section p:first-of-type::first-letter {
     transform: none;
     box-shadow: none;
     padding-left: 10px;
+}
+
+.resource-card:hover::before {
+    color: var(--gold);
+    opacity: 1;
+}
+
+.resource-card:hover::after {
+    color: var(--gold);
+    opacity: 1;
 }
 
 .resource-card h3 {
@@ -394,8 +436,8 @@ section p:first-of-type::first-letter {
 /* Footer */
 footer {
     text-align: center;
-    padding: 40px 20px 0;
-    margin-top: 60px;
+    padding: 30px 20px 0;
+    margin-top: 45px;
     border-top: 2px solid rgba(139, 111, 71, 0.2);
     background: transparent;
     color: var(--text-aged);
@@ -410,7 +452,7 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .footer-line {
@@ -424,6 +466,7 @@ footer {
     width: 80px;
     height: auto;
     filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+    transform: rotate(-8deg);
 }
 
 .approval-stamp {
@@ -433,6 +476,7 @@ footer {
     width: 90px;
     height: auto;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    opacity: 0.7;
 }
 
 .container {

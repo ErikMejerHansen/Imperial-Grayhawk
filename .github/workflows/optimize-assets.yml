@@ -1,0 +1,123 @@
+name: Optimize Assets
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.png'
+      - '**.PNG'
+      - '**.jpg'
+      - '**.JPG'
+      - '**.jpeg'
+      - '**.JPEG'
+      - 'optimize-assets.sh'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**.png'
+      - '**.PNG'
+      - '**.jpg'
+      - '**.JPG'
+      - '**.jpeg'
+      - '**.JPEG'
+      - 'optimize-assets.sh'
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  optimize:
+    name: Optimize Image Assets
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Install ImageMagick
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick
+          
+      - name: Install pngquant
+        run: |
+          sudo apt-get install -y pngquant
+          
+      - name: Run asset optimization
+        run: |
+          chmod +x optimize-assets.sh
+          ./optimize-assets.sh
+          
+      - name: Generate optimization report
+        id: report
+        run: |
+          # Calculate sizes
+          ORIGINAL_SIZE=$(find . -type f \( -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.jpeg" -o -name "*.JPEG" \) ! -path "./optimized-assets/*" ! -path "./.git/*" -exec stat -c%s {} + | awk '{s+=$1} END {print s}')
+          OPTIMIZED_SIZE=$(find optimized-assets -type f \( -name "*.png" -o -name "*.PNG" -o -name "*.jpg" -o -name "*.JPG" -o -name "*.jpeg" -o -name "*.JPEG" \) -exec stat -c%s {} + | awk '{s+=$1} END {print s}')
+          
+          # Calculate reduction
+          if [ "$ORIGINAL_SIZE" -gt 0 ]; then
+            REDUCTION=$(( (ORIGINAL_SIZE - OPTIMIZED_SIZE) * 100 / ORIGINAL_SIZE ))
+          else
+            REDUCTION=0
+          fi
+          
+          # Format sizes for display (convert to MB)
+          ORIGINAL_MB=$(echo "scale=2; $ORIGINAL_SIZE / 1024 / 1024" | bc)
+          OPTIMIZED_MB=$(echo "scale=2; $OPTIMIZED_SIZE / 1024 / 1024" | bc)
+          
+          echo "original_size=$ORIGINAL_MB MB" >> $GITHUB_OUTPUT
+          echo "optimized_size=$OPTIMIZED_MB MB" >> $GITHUB_OUTPUT
+          echo "reduction=$REDUCTION%" >> $GITHUB_OUTPUT
+          
+          # Create summary
+          echo "## 🖼️ Asset Optimization Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Original Size | $ORIGINAL_MB MB |" >> $GITHUB_STEP_SUMMARY
+          echo "| Optimized Size | $OPTIMIZED_MB MB |" >> $GITHUB_STEP_SUMMARY
+          echo "| Size Reduction | $REDUCTION% |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Optimized assets are available as workflow artifacts." >> $GITHUB_STEP_SUMMARY
+          
+      - name: Upload optimized assets as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: optimized-assets
+          path: optimized-assets/
+          retention-days: 30
+          if-no-files-found: error
+          
+      - name: Comment on PR (if applicable)
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            // Read the step summary to get optimization stats
+            const originalSize = "${{ steps.report.outputs.original_size }}";
+            const optimizedSize = "${{ steps.report.outputs.optimized_size }}";
+            const reduction = "${{ steps.report.outputs.reduction }}";
+            
+            const comment = `## 🖼️ Asset Optimization Results
+            
+            The asset optimization workflow has completed successfully!
+            
+            | Metric | Value |
+            |--------|-------|
+            | Original Size | ${originalSize} |
+            | Optimized Size | ${optimizedSize} |
+            | Size Reduction | ${reduction} |
+            
+            ✅ Optimized assets are available as workflow artifacts and can be downloaded from the Actions tab.
+            
+            **Note:** Optimized assets are not automatically committed to the repository. They should be reviewed and deployed as part of your deployment process.`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });

@@ -83,10 +83,55 @@ Imperial-Grayhawk/
 └── README.md          # This file
 ```
 
+## Asset Optimization
+
+This repository includes an automated asset optimization pipeline to reduce file sizes and improve page load times.
+
+### Running Optimization Locally
+
+To optimize images locally, run:
+
+```bash
+./optimize-assets.sh
+```
+
+**Requirements:**
+- ImageMagick (for PNG and JPG optimization)
+- pngquant (optional, for better PNG compression)
+
+The script will:
+- Optimize all PNG and JPG images in the repository
+- Output optimized files to the `optimized-assets/` folder
+- Preserve original files unchanged
+- Show file size reduction statistics
+
+**Note:** The `optimized-assets/` folder is excluded from git tracking via `.gitignore`.
+
+### Automated CI/CD Pipeline
+
+The repository includes a GitHub Actions workflow that automatically optimizes assets when:
+- Changes to image files are pushed to the `main` branch
+- A pull request with image changes is created or updated
+- The workflow is manually triggered
+
+The workflow:
+1. Runs the optimization script automatically
+2. Generates a report showing file size reductions
+3. Uploads optimized assets as workflow artifacts
+4. Comments on pull requests with optimization results
+
+**Accessing Optimized Assets:**
+- Navigate to the "Actions" tab in GitHub
+- Select a workflow run
+- Download the "optimized-assets" artifact
+
+**Deployment:** Optimized assets are not automatically committed to the repository. During deployment, you can download the optimized assets from the workflow artifacts and use them in production.
+
 ## Tips
 
 - Use descriptive filenames (e.g., `grayhawk-city-map.png` instead of `map1.png`)
 - Keep file sizes reasonable for easy downloading
+- Run the optimization script before committing large images
 - Update session notes regularly to help players remember what happened
 - PNG works great for maps, PDF for text handouts
 

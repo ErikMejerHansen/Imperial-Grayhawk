@@ -23,23 +23,6 @@
     box-sizing: border-box;
 }
 
-/* Skip to content link for accessibility */
-.skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: var(--deep-red);
-    color: var(--parchment-light);
-    padding: 8px 16px;
-    text-decoration: none;
-    font-weight: 700;
-    z-index: 100;
-}
-
-.skip-link:focus {
-    top: 0;
-}
-
 body {
     font-family: 'IM Fell DW Pica', 'Garamond', 'Palatino', 'Book Antiqua', 'Georgia', serif;
     background: radial-gradient(ellipse at center, #3d2849 0%, #1f1426 100%);

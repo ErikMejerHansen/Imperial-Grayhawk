@@ -23,6 +23,23 @@
     box-sizing: border-box;
 }
 
+/* Skip to content link for accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--deep-red);
+    color: var(--parchment-light);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 body {
     font-family: 'IM Fell DW Pica', 'Garamond', 'Palatino', 'Book Antiqua', 'Georgia', serif;
     background: radial-gradient(ellipse at center, #3d2849 0%, #1f1426 100%);
@@ -214,6 +231,29 @@ nav a:hover {
     background: linear-gradient(to bottom, var(--parchment-light), var(--aged-gold));
     transform: translateY(-3px);
     box-shadow: 0 6px 18px rgba(212, 175, 55, 0.4);
+}
+
+/* Section Dividers */
+.section-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 50px 0;
+    color: var(--gold);
+    opacity: 0.6;
+}
+
+.section-divider::before,
+.section-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--gold);
+    opacity: 0.4;
+}
+
+.section-divider span {
+    padding: 0 20px;
+    font-size: 1.2rem;
 }
 
 /* Sections */

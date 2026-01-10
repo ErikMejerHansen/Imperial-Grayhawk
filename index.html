@@ -11,16 +11,17 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="page-frame">
         <div class="ornate-border">
             <div class="container">
-                <header>
+                <header role="banner">
                     <h1>Imperial Grayhawk</h1>
-                    <p class="tagline">The Empire Holds.</p>
-                    <div class="header-divider">
+                    <p class="tagline">The Empire Stands. For Now.</p>
+                    <div class="header-divider" aria-hidden="true">
                         <img src="assets/star.png" alt="" class="divider-star">
                         <span class="divider-line"></span>
-                        <img src="Imperial_Shield.png" alt="Imperial Shield" class="header-logo">
+                        <img src="Imperial_Shield.png" alt="Imperial Shield of Grayhawk" class="header-logo">
                         <span class="divider-line"></span>
                         <img src="assets/star.png" alt="" class="divider-star">
                     </div>
@@ -31,9 +32,13 @@
                     <p>Within these archives lie the maps, documents, and chronicles of our ongoing campaign through the grim and perilous lands of the Empire. May these resources aid you in your adventures.</p>
                 </div>
 
-                <main>
-                    <section id="maps">
-                        <h2>Maps</h2>
+                <div class="section-divider" aria-hidden="true">
+                    <span>◆</span>
+                </div>
+
+                <main id="main-content" role="main">
+                    <section id="maps" aria-labelledby="maps-heading">
+                        <h2 id="maps-heading">Maps</h2>
                         <div class="resource-grid">
                             <a href="maps/The Empire of Grayhawk.jpg" class="resource-card" target="_blank">
                                 <div class="resource-info">
@@ -56,8 +61,12 @@
                         </div>
                     </section>
 
-                    <section id="handouts">
-                        <h2>Handouts</h2>
+                    <div class="section-divider" aria-hidden="true">
+                        <span>◆</span>
+                    </div>
+
+                    <section id="handouts" aria-labelledby="handouts-heading">
+                        <h2 id="handouts-heading">Handouts</h2>
                         <div class="resource-grid">
                             <a href="handouts/The Empire Of Grayhawk Gazetter.pdf" class="resource-card" target="_blank">
                                 <div class="resource-info">
@@ -68,21 +77,25 @@
                         </div>
                     </section>
 
-                    <section id="notes">
-                        <h2>Session Notes</h2>
+                    <div class="section-divider" aria-hidden="true">
+                        <span>◆</span>
+                    </div>
+
+                    <section id="notes" aria-labelledby="notes-heading">
+                        <h2 id="notes-heading">Session Notes</h2>
                         <p style="color: var(--text-aged); font-style: italic; text-align: center; padding: 40px;">The chronicle has yet to begin. Session notes will appear here after your first adventure...</p>
                     </section>
                 </main>
 
-                <footer>
-                    <div class="footer-decorations">
+                <footer role="contentinfo">
+                    <div class="footer-decorations" aria-hidden="true">
                         <span class="footer-line"></span>
-                        <img src="assets/seal.png" alt="Imperial Seal" class="wax-seal">
+                        <img src="assets/seal.png" alt="" class="wax-seal">
                         <span class="footer-line"></span>
                     </div>
                     <p>May your blades stay sharp and your torches burn bright.</p>
                 </footer>
-                <img src="assets/stamp.png" alt="Approved" class="approval-stamp">
+                <img src="assets/stamp.png" alt="" class="approval-stamp" aria-hidden="true">
             </div>
         </div>
     </div>

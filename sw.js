@@ -1,16 +1,16 @@
 const CACHE_NAME = 'imperial-grayhawk-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/Imperial_Shield.png',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png',
-  '/assets/star.png',
-  '/assets/seal.png',
-  '/assets/stamp.png',
-  '/assets/watermark.png',
-  '/assets/border.png'
+  './',
+  './index.html',
+  './styles.css',
+  './Imperial_Shield.png',
+  './icons/icon-192x192.png',
+  './icons/icon-512x512.png',
+  './assets/star.png',
+  './assets/seal.png',
+  './assets/stamp.png',
+  './assets/watermark.png',
+  './assets/border.png'
 ];
 
 // Install event - cache resources

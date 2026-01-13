@@ -1,4 +1,4 @@
-const CACHE_NAME = 'imperial-grayhawk-v1';
+const CACHE_NAME = 'imperial-grayhawk-v2';
 const urlsToCache = [
   './',
   './index.html',
@@ -10,7 +10,11 @@ const urlsToCache = [
   './assets/seal.png',
   './assets/stamp.png',
   './assets/watermark.png',
-  './assets/border.png'
+  './assets/border.png',
+  './maps/northkeep.html',
+  './maps/Northkeep.PNG',
+  './maps/The Empire of Grayhawk.jpg',
+  './maps/On the road to Northkeep.PNG'
 ];
 
 // Install event - cache resources

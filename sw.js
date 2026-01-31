@@ -1,4 +1,4 @@
-const CACHE_NAME = 'imperial-grayhawk-v4';
+const CACHE_NAME = 'imperial-grayhawk-v5';
 const urlsToCache = [
   './',
   './index.html',
@@ -24,7 +24,8 @@ const urlsToCache = [
   './npcs/nerys.html',
   './npcs/tomas.html',
   './npcs/umbrusk.html',
-  './npcs/winvarle.html'
+  './npcs/winvarle.html',
+  './sessions/session1.html'
 ];
 
 // Install event - cache resources

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'imperial-grayhawk-v2';
+const CACHE_NAME = 'imperial-grayhawk-v3';
 const urlsToCache = [
   './',
   './index.html',
@@ -14,7 +14,17 @@ const urlsToCache = [
   './maps/northkeep.html',
   './maps/Northkeep.PNG',
   './maps/The Empire of Grayhawk.jpg',
-  './maps/On the road to Northkeep.PNG'
+  './maps/On the road to Northkeep.PNG',
+  './npcs/dorian.html',
+  './npcs/dwern.html',
+  './npcs/ferric.html',
+  './npcs/haldryk.html',
+  './npcs/ivlis.html',
+  './npcs/mallyn.html',
+  './npcs/nerys.html',
+  './npcs/tomas.html',
+  './npcs/umbrusk.html',
+  './npcs/winvarle.html'
 ];
 
 // Install event - cache resources

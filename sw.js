@@ -1,4 +1,4 @@
-const CACHE_NAME = 'imperial-grayhawk-v5';
+const CACHE_NAME = 'imperial-grayhawk-v6';
 const urlsToCache = [
   './',
   './index.html',

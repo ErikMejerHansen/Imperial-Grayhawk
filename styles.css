@@ -286,14 +286,14 @@ section p:first-of-type::first-letter {
 .resource-grid {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 0;
     margin-top: 20px;
 }
 
 .resource-card {
     background: transparent;
     border: none;
-    padding: 12px 0;
+    padding: 4px 0;
     transition: all 0.3s ease;
     display: flex;
     justify-content: space-between;
@@ -355,7 +355,7 @@ section p:first-of-type::first-letter {
 
 .resource-card h3 {
     font-size: 1.3rem;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     color: var(--text-dark);
     letter-spacing: 1px;
     font-weight: 700;

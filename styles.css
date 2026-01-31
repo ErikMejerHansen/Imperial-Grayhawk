@@ -478,6 +478,30 @@ section p:first-of-type::first-letter {
     font-weight: 900;
 }
 
+/* Lore section styling */
+.lore-text h3 {
+    margin-top: 1.5em;
+}
+
+.lore-text h3:first-child {
+    margin-top: 0;
+}
+
+.lore-text ul {
+    margin-left: 1.5em;
+    padding-left: 0;
+}
+
+.lore-text a {
+    color: var(--deep-red);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.lore-text a:hover {
+    color: var(--gold);
+}
+
 /* Footer */
 footer {
     text-align: center;

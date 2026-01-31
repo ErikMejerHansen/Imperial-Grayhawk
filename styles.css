@@ -492,6 +492,18 @@ section p:first-of-type::first-letter {
     padding-left: 0;
 }
 
+.lore-text blockquote {
+    margin: 1em 0 1em 1.5em;
+    padding-left: 1em;
+    border-left: 3px solid var(--border-ornate);
+    font-style: italic;
+    color: var(--text-aged);
+}
+
+.lore-text blockquote p {
+    margin: 0.5em 0;
+}
+
 .lore-text a {
     color: var(--deep-red);
     text-decoration: underline;

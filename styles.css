@@ -320,8 +320,16 @@ section p:first-of-type::first-letter {
     transition: all 0.3s ease;
 }
 
-.resource-card::after {
+.resource-card[target="_blank"]::after {
     content: '⬇';
+    color: var(--deep-red);
+    font-size: 1.2rem;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.resource-card:not([target="_blank"])::after {
+    content: '→';
     color: var(--deep-red);
     font-size: 1.2rem;
     opacity: 0.5;

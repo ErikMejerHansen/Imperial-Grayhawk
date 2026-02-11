@@ -199,6 +199,46 @@
     </div>
     </div>
 
+    <script>
+        /* Temporary cleanup registration script
+           - Registers a temporary cleanup service worker at ./sw.js which will
+             clear caches and unregister itself on activation.
+           - Also attempts to immediately unregister any existing registrations
+             and clear client caches for visitors who already have an older SW.
+           Remove this script after a few days once users have been refreshed. */
+        (function(){
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    // Register the temporary cleanup SW (no scope required)
+                    navigator.serviceWorker.register('./sw.js').then((reg) => {
+                        console.log('Cleanup service worker registered:', reg);
+                    }).catch((err) => {
+                        console.warn('Cleanup service worker register failed:', err);
+                    });
+
+                    // Immediately try to unregister existing SWs and clear caches for this session
+                    navigator.serviceWorker.getRegistrations().then((regs) => {
+                        if (regs.length) {
+                            regs.forEach(r => r.unregister());
+                            if (window.caches) {
+                                caches.keys().then(keys => Promise.all(keys.map(k => caches.delete(k))));
+                            }
+                            // Give the browser a moment, then reload to fetch fresh assets
+                            setTimeout(() => location.reload(), 800);
+                        }
+                    });
+                });
+
+                // Optional: listen for messages from the cleanup SW to reload if advised
+                navigator.serviceWorker.addEventListener('message', (ev) => {
+                    if (ev.data && ev.data.action === 'cleanup-reload') {
+                        location.reload();
+                    }
+                });
+            }
+        })();
+    </script>
+
 </body>
 
 </html>

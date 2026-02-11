@@ -88,25 +88,7 @@ This site is configured as a Progressive Web App (PWA), which means it can be in
 2. Open `http://localhost:8000` in your browser
 3. Check for the install prompt or use browser DevTools to test PWA features
 
-**Chrome/Edge DevTools:**
-1. Open DevTools (F12)
-2. Go to "Application" tab
-3. Check "Manifest" to verify manifest.json is loaded
-4. Check "Service Workers" to verify the service worker is registered
-5. Test offline mode using the "Offline" checkbox in the Network tab
-
-**Installing on Mobile:**
-- **iOS Safari**: Tap the Share button, then "Add to Home Screen"
-- **Android Chrome**: Tap the menu (⋮), then "Add to Home Screen" or "Install app"
-
-**Installing on Desktop:**
-- **Chrome/Edge**: Look for the install icon in the address bar, or use the menu to install
-
-Once installed, the app will:
-- Work offline (after first visit)
-- Have its own app icon
-- Run in standalone mode (without browser UI)
-- Cache maps and handouts for offline access
+**Note:** PWA support has been removed; this repository no longer includes a web app manifest or service worker.
 
 ## File Structure
 
@@ -114,9 +96,7 @@ Once installed, the app will:
 Imperial-Grayhawk/
 ├── index.html          # Main page
 ├── styles.css          # Styling
-├── manifest.json       # PWA manifest
-├── sw.js              # Service worker for offline support
-├── icons/             # PWA app icons
+├── icons/              # App icons (if used)
 │   ├── icon-192x192.png
 │   └── icon-512x512.png
 ├── assets/            # UI assets (stars, seals, etc.)

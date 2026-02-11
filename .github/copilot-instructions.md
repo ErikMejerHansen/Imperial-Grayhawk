@@ -1,33 +1,17 @@
 # GitHub Copilot Instructions for Imperial Grayhawk
 
-## PWA Service Worker Updates
+## Note: PWA Removed
 
-**IMPORTANT**: Whenever new files are added to the project that should be accessible to players (HTML pages, images, PDFs, etc.), you MUST update the service worker:
+PWA support has been removed from this project. Ignore previous instructions about updating `sw.js` — the repository no longer includes a service worker or web app manifest.
 
-1. **Update `sw.js`**:
-   - Increment the `CACHE_NAME` version (e.g., `v1` → `v2`)
-   - Add the new file paths to the `urlsToCache` array
+## Project Structure
 
-This ensures:
-- The PWA cache is invalidated and refreshed
-- New content is available offline
-- Players get the latest version automatically
-
-### Example
-
-When adding a new location page like `maps/northkeep.html`:
-
-```javascript
-// Increment version
-const CACHE_NAME = 'imperial-grayhawk-v2';
-
-// Add to cache list
-const urlsToCache = [
-  // ...existing files...
-  './maps/northkeep.html',
-  './maps/Northkeep.PNG'
-];
-```
+- `/maps/` - Map images and location pages
+  - Location pages follow pattern: `locationname.html` with accompanying `Locationname-Lore.md`
+- `/handouts/` - PDFs and other player handouts
+- `/assets/` - Icons, decorative elements
+- `index.html` - Main landing page
+- `styles.css` - Global styles (note: `nav a` has button styling)
 
 ## Project Structure
 

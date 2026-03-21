@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Session 4 - On the Termination of a Minor Fragment at the Northern Fortification of Northkeep">
+    <meta name="theme-color" content="#8b7355">
+    <title>Session 4 - Imperial Grayhawk</title>
+    <link rel="icon" type="image/png" href="../Imperial_Shield.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=IM+Fell+DW+Pica:ital@0;1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .scholarly-doc {
+            max-width: 660px;
+            margin: 0 auto;
+        }
+
+        .doc-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid rgba(90, 74, 50, 0.3);
+        }
+
+        .doc-series {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: var(--text-aged);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .doc-subtitle {
+            font-style: italic;
+            font-size: 0.9rem;
+            color: var(--text-aged);
+            margin-top: 0.4rem;
+        }
+
+        .doc-meta {
+            font-size: 0.82rem;
+            color: var(--text-aged);
+            font-style: italic;
+            margin-bottom: 2rem;
+            padding-left: 0.75rem;
+            border-left: 2px solid rgba(107, 31, 31, 0.35);
+            line-height: 1.8;
+        }
+
+        .scholarly-doc p {
+            line-height: 1.85;
+            margin-bottom: 1.25rem;
+            text-align: justify;
+        }
+
+        .section-head {
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            color: var(--deep-red);
+            margin: 2.5rem 0 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .doc-footnote {
+            font-size: 0.82rem;
+            font-style: italic;
+            color: var(--text-aged);
+            padding-left: 1rem;
+            border-left: 1px solid rgba(90, 74, 50, 0.3);
+            margin: 0.5rem 0 1.5rem;
+            line-height: 1.7;
+        }
+
+        .scholarly-doc sup {
+            color: var(--deep-red);
+            font-size: 0.65rem;
+        }
+
+        .marginal {
+            font-size: 0.78rem;
+            font-style: italic;
+            color: var(--text-aged);
+            margin: -0.5rem 0 1rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        .crossed {
+            text-decoration: line-through;
+            color: var(--text-aged);
+        }
+
+        /* Vision blocks */
+        .vision {
+            background-color: #0a0a12;
+            background-image: radial-gradient(ellipse at 50% 0%, #1a1530 0%, #0a0a12 70%);
+            margin: 2.5rem -80px;
+            padding: 2.5rem 80px;
+            position: relative;
+            border-top: 1px solid rgba(200, 192, 216, 0.15);
+            border-bottom: 1px solid rgba(200, 192, 216, 0.15);
+        }
+
+        .vision-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            color: rgba(200, 192, 216, 0.4);
+            margin-bottom: 1.25rem;
+            text-transform: uppercase;
+        }
+
+        .vision p {
+            color: #c8c0d8;
+            font-style: italic;
+            font-size: 0.97rem;
+            line-height: 2;
+            text-align: left;
+            margin-bottom: 0.9rem;
+        }
+
+        .vision p.vision-title {
+            font-family: 'Cinzel', serif;
+            font-style: normal;
+            font-size: 0.82rem;
+            letter-spacing: 0.1em;
+            color: rgba(200, 192, 216, 0.6);
+            margin-bottom: 1rem;
+        }
+
+        .reentry p:first-child {
+            font-style: italic;
+            color: var(--text-aged);
+        }
+
+        .broken p {
+            font-style: italic;
+            color: var(--text-aged);
+        }
+
+        .doc-divider {
+            text-align: center;
+            color: var(--deep-red);
+            margin: 2rem 0;
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            opacity: 0.5;
+        }
+
+        .doc-colophon {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(90, 74, 50, 0.25);
+            font-size: 0.82rem;
+            color: var(--text-aged);
+            font-style: italic;
+            text-align: center;
+            line-height: 1.9;
+        }
+
+        @media (max-width: 768px) {
+            .vision {
+                margin: 2rem -40px;
+                padding: 2rem 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-frame">
+        <div class="ornate-border">
+            <div class="container">
+                <header role="banner">
+                    <h1>Session 4</h1>
+                    <div class="header-divider" aria-hidden="true">
+                        <img src="../assets/star.png" alt="" class="divider-star">
+                        <span class="divider-line"></span>
+                        <img src="../Imperial_Shield.png" alt="Imperial Shield of Grayhawk" class="header-logo">
+                        <span class="divider-line"></span>
+                        <img src="../assets/star.png" alt="" class="divider-star">
+                    </div>
+                </header>
+
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <a href="../index.html"
+                        style="color: var(--text-aged); text-decoration: none; font-size: 0.95em; opacity: 0.8; transition: opacity 0.2s; border: none; background: none; padding: 0; box-shadow: none; text-transform: none; letter-spacing: normal; font-weight: normal;">
+                        ← Back to Archive</a>
+                </div>
+
+                <main id="main-content" role="main">
+                    <div class="scholarly-doc">
+
+                        <div class="doc-header">
+                            <div class="doc-series">Fragmentary Studies — Vol. IV, Appendix C</div>
+                            <p class="tagline" style="font-size: 1.1rem; letter-spacing: 2px;">On the Termination of a Minor Fragment<br>at the Northern Fortification of Northkeep</p>
+                            <div class="doc-subtitle">Being a partial account, assembled from testimony and personal observation</div>
+                        </div>
+
+                        <div class="doc-meta">
+                            Authorship: withheld by necessity<br>
+                            Circulation: restricted — three copies only<br>
+                            Status: incomplete. The author does not expect to complete it.
+                        </div>
+
+                        <p>
+                            I have spent the better part of two decades writing about fragment objects with a detachment I considered professional. I described their effects in the passive voice. I catalogued their theological implications without, I told myself, being troubled by them. The reader who knows my earlier work<sup>1</sup> will understand why I approach this account differently. I am not sure detachment is available to me now.
+                        </p>
+
+                        <div class="doc-footnote">
+                            <sup>1</sup> Specifically: <em>Towards a Taxonomy of Minor Manifestations</em>, in which I argued — with considerable confidence I no longer possess — that fragment objects below a certain resonance threshold posed limited eschatological risk.
+                        </div>
+
+                        <p>
+                            What follows is a reconstruction of events at Northkeep's so-called Caves of Chaos, compiled from the accounts of those present. I was not myself in the cave. I wish, at moments, that I had been. At other moments I am profoundly grateful.
+                        </p>
+
+                        <div class="section-head">I. Approach and Entry</div>
+
+                        <p>
+                            The party entered the final cave — the deepest of the complex, and the only one whose internal geometry I cannot fully account for from the survey records — in a state of, by all accounts, determined readiness. They had cleared the preceding chambers over several days. They knew what they were looking for. Whether they understood what they were approaching is a separate question, and one I shall return to.
+                        </p>
+
+                        <p>
+                            The first obstacle was a reanimated ogre of considerable size, apparently stationed as a threshold guardian. It was dispatched with efficiency. I note this only because it appears unremarkable — and in context, it <em>was</em> unremarkable, which says something about the evening that followed.
+                        </p>
+
+                        <div class="section-head">II. The Bell Room — First Contact</div>
+
+                        <p>
+                            Beyond the threshold lay the chamber itself. The accounts agree on its contents: an elderly man, standing vigil; the bell, mounted centrally; and along the walls, an accumulation of skeletal remains that ought to have prompted more caution than it apparently did.<sup>2</sup>
+                        </p>
+
+                        <div class="doc-footnote">
+                            <sup>2</sup> One witness described the bones as "just sort of piled there." I have chosen not to pursue this line of questioning further.
+                        </div>
+
+                        <p>
+                            The old man struck the bell before the party could act. At that moment — between one strike and the next, before the echo had resolved — they were shown the following.
+                        </p>
+
+                        <div class="vision">
+                            <div class="vision-label">— First Resonance — as reconstructed from witness account —</div>
+                            <p class="vision-title">First Strike</p>
+                            <p>As the bell is struck and the first crack forms:</p>
+                            <p>For just a moment — between one heartbeat and the next — the sound goes somewhere else.</p>
+                            <p>Blasted plains, stretching to every horizon. The earth scorched black and cracked open, as though the ground itself recoils from something. Armies beyond counting — or what is left of armies. Banners trampled. Thousands upon thousands, all still.</p>
+                            <p>The sky is wrong. Torn open along one edge, light bleeding through that shouldn't be there.</p>
+                            <p>Then they are back.</p>
+                        </div>
+
+                        <div class="reentry">
+                            <p>
+                                I have read this testimony four times. Each time I set it down and look at something else for a while before continuing.
+                            </p>
+                            <p>
+                                The skeletal remains animated upon the bell's sounding. The old man was subdued — rendered insensible by magical means — before he could act further. He was bound and gagged. The skeletons were driven back by the party's cleric and destroyed in detail. The sequence was, I am told, tactically sound.
+                            </p>
+                            <p>
+                                I record this as it was reported to me. The bones. The tactics. I find myself returning to the sky.
+                            </p>
+                        </div>
+
+                        <div class="section-head">III. The Second Sounding</div>
+
+                        <p>
+                            What followed is the detail that troubles me most, not for its consequences but for its cause. The party, having secured the chamber, fell to discussing their next action. One member — the scholar of the group, I am told, which I find either fitting or deeply ironic — reached out and touched the bell.
+                        </p>
+
+                        <p>
+                            Carefully, I am assured. <span class="crossed">Carefully.</span>
+                        </p>
+
+                        <p>
+                            The bell sounded. The crack deepened. The remains, already destroyed once, began to reform — diminished, slower, but present. And the vision came again.
+                        </p>
+
+                        <div class="vision">
+                            <div class="vision-label">— Second Resonance —</div>
+                            <p class="vision-title">Second Strike</p>
+                            <p>As the bell is struck and the crack deepens:</p>
+                            <p>The plains again. The same stillness. The same wrongness in the sky.</p>
+                            <p>And now, closer: at the centre of it all, something on the ground. A griffin. White, or it had been white. Its wings are spread as if it tried to rise one last time and didn't make it.</p>
+                            <p>Then they are back.</p>
+                        </div>
+
+                        <div class="reentry">
+                            <p>
+                                The reformed skeletons were destroyed a second time. I shall not belabour the mechanics.
+                            </p>
+                            <p>
+                                The griffin requires comment, though I am uncertain what comment is adequate. The white griffin appears in three of the older eschatological texts as a symbol of — I am trying to be precise here — <em>a sovereignty that ends at the threshold of something larger than sovereignty.</em> My earlier self would have noted this calmly and moved on. I note it here and find that I cannot quite move on.
+                            </p>
+                        </div>
+
+                        <div class="section-head">IV. The Priestess — Third Sounding</div>
+
+                        <p>
+                            During the interval between the second and third soundings, the missing priestess Ivlis — for whose recovery the party had also been searching — entered the chamber. She was restrained before she could reach the bell, and was herself bound and gagged alongside the old man.
+                        </p>
+
+                        <p>
+                            An attempt was made to burn the accumulated bones. I am told it was only partially successful.
+                        </p>
+
+                        <p>
+                            Ivlis, during her interrogation, managed — through means that remain unclear to me, though telekinesis has been suggested — to strike the bell a final time. The third resonance followed.
+                        </p>
+
+                        <div class="vision">
+                            <div class="vision-label">— Third Resonance —</div>
+                            <p class="vision-title">Third Strike</p>
+                            <p>As the bell is struck and the crack spreads:</p>
+                            <p>The plains. The griffin. And standing over it: one figure.</p>
+                            <p>Alone. On foot. Surrounded by the scale of a catastrophe that dwarfs everything around him. He does not look down at the griffin at his feet.</p>
+                            <p>He is looking up.</p>
+                            <p>Then they are back.</p>
+                        </div>
+
+                        <div class="reentry">
+                            <p>
+                                The skeletons rose a third time. They were destroyed a third time. I do not imagine this required less effort simply because it was the third occasion.
+                            </p>
+                            <p>
+                                The figure. I know what my colleagues would say. I know what the texts suggest. I am not prepared to write it here, in a document that may outlast my ability to suppress it. I will say only: a man standing alone over a dead griffin, looking up at something he has nonetheless decided to face — this is not an image I expected a minor fragment object to contain.
+                            </p>
+                            <p>
+                                Minor. I used that word in my own title. I am reconsidering it.
+                            </p>
+                        </div>
+
+                        <div class="section-head">V. The Shattering</div>
+
+                        <p>
+                            The bell was destroyed by the party's combined effort. I have no account of exactly how the final blow was struck, and I find, reading back through this document, that I am not sure it matters. What matters is what was seen when it broke.
+                        </p>
+
+                        <div class="vision">
+                            <div class="vision-label">— Final Resonance — upon shattering —</div>
+                            <p class="vision-title">The Bell Shatters</p>
+                            <p>As the final blow lands and the bell breaks apart:</p>
+                            <p>The figure again. The plains. The dead griffin. The torn sky.</p>
+                            <p>He is looking up at something vast. Something that has no fixed shape — that is trying to have a shape, pulling darkness and flame into a form too large for the eye to hold. A god, maybe. Or what a god looks like when it is also a storm.</p>
+                            <p>The figure raises his hammer.</p>
+                            <p>The vision ends there.</p>
+                            <p>They are back in the room.</p>
+                        </div>
+
+                        <div class="reentry">
+                            <p>The air tastes of metal and something burnt. The bell lies in four pieces at their feet. As they watch, each shard dims — the dark metal losing whatever made it wrong — and fades until there is nothing left on the floor but dust and the smell of scorched air.</p>
+                            <p>And in their ears — fading, but not yet gone — a tone. Vast. Wrong. A single note that doesn't resolve, doesn't decay cleanly, just hangs at the edge of hearing like something that hasn't finished yet.</p>
+                            <p>Like something that was never meant to be rung.</p>
+                            <p>
+                                The old man and the priestess faded with the shards. The party reports a smell of spring. Birds. Lightness. I believe them. Fragment objects, when they collapse, often release whatever they had been suppressing — warmth, sound, colour returning to a place that had gone grey.
+                            </p>
+                            <p>
+                                What I cannot account for is the fourth vision. A minor fragment — I keep using that word — should not contain memory of that scale. It should not contain <em>him</em>. It should not contain the moment.
+                            </p>
+                            <p>
+                                The Inquisition's position is that Iuz was defeated. That the Empire was built on a victory. That what we call the Four Aspects are distant, uncoordinated threats — dangerous, yes, but not the same thing as what came before.
+                            </p>
+                            <p>
+                                A bell at the edge of the northern frontier, rattled loose from some half-forgotten cave, contains a vision of the god before he fell.
+                            </p>
+                            <p>
+                                I am not sure what that means. I am sure it means something.
+                            </p>
+                            <p>
+                                The party returned to Northkeep. They were fed, celebrated, thanked. The Earl has requested an audience. The world, as far as Northkeep is concerned, is better than it was.
+                            </p>
+                            <p>
+                                I keep hearing that tone.
+                            </p>
+                        </div>
+
+                        <div class="doc-divider">— ✦ —</div>
+
+                        <div class="doc-colophon">
+                            <em>The document ends here. A later hand has added, in the margin below:</em><br><br>
+                            <em>"The author ceased correspondence approximately three months after this was written.<br>
+                            Cause unknown. Three copies were made. This is not one of them."</em>
+                        </div>
+
+                    </div>
+                </main>
+
+                <footer role="contentinfo"
+                    style="margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border-ornate); opacity: 0.4; text-align: center;">
+                    <div class="footer-decorations" aria-hidden="true">
+                        <span class="footer-line"></span>
+                        <img src="../assets/seal.png" alt="" class="wax-seal"
+                            style="width: 40px; height: 40px; opacity: 0.6;">
+                        <span class="footer-line"></span>
+                    </div>
+                    <p style="color: var(--text-aged); font-size: 0.9em; margin-top: 20px;">Imperial Grayhawk Campaign
+                        Archive</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

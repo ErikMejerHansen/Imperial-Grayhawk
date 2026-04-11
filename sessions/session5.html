@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Estuary Common — Session 5 Broadsheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #e8dfc8;
+    --paper-dark: #d4c9a8;
+    --ink: #1a1410;
+    --ink-faded: #3a2e22;
+    --ink-very-faded: #6b5a42;
+    --rule: #2a2018;
+    --stain: rgba(120, 90, 40, 0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #5a4a32;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+    font-family: 'IM Fell English', Georgia, serif;
+  }
+
+  .broadsheet {
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(160,130,80,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 90%, rgba(100,80,40,0.14) 0%, transparent 45%),
+      radial-gradient(ellipse at 60% 40%, rgba(180,150,90,0.08) 0%, transparent 40%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    width: 820px;
+    max-width: 100%;
+    padding: 36px 40px 48px;
+    position: relative;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5), inset 0 0 60px rgba(100,80,40,0.1);
+    border: 1px solid rgba(100,80,40,0.3);
+  }
+
+  /* Foxing / age stains */
+  .broadsheet::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 80px 60px at 92% 8%, rgba(130,100,50,0.09) 0%, transparent 100%),
+      radial-gradient(ellipse 50px 40px at 5% 85%, rgba(110,85,40,0.1) 0%, transparent 100%),
+      radial-gradient(ellipse 30px 25px at 70% 55%, rgba(140,110,60,0.07) 0%, transparent 100%),
+      radial-gradient(ellipse 20px 18px at 30% 30%, rgba(120,95,50,0.08) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    text-align: center;
+    border-bottom: 3px double var(--rule);
+    padding-bottom: 10px;
+    margin-bottom: 6px;
+  }
+
+  .masthead-eyebrow {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-faded);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .masthead-title {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 3.8rem;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.15);
+  }
+
+  .masthead-rule {
+    height: 1px;
+    background: var(--rule);
+    margin: 5px 0;
+  }
+
+  .masthead-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--ink-faded);
+    padding: 4px 0;
+  }
+
+  .masthead-tagline {
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--ink-faded);
+    margin: 3px 0 6px;
+  }
+
+  /* ── COLUMN LAYOUT ── */
+  .body-columns {
+    display: grid;
+    grid-template-columns: 2fr 1px 1.1fr;
+    gap: 0;
+    margin-top: 14px;
+  }
+
+  .col-divider {
+    background: var(--rule);
+    margin: 0 16px;
+    opacity: 0.6;
+  }
+
+  .col-left, .col-right {
+    padding: 0 4px;
+  }
+
+  /* ── ARTICLES ── */
+  .article {
+    margin-bottom: 20px;
+  }
+
+  .article + .article {
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+  }
+
+  .article-kicker {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    color: var(--ink-very-faded);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .article-headline {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 1.22rem;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 5px;
+  }
+
+  .article-headline.large {
+    font-size: 1.55rem;
+  }
+
+  .article-deck {
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--ink-faded);
+    line-height: 1.5;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(50,35,15,0.25);
+  }
+
+  .article-body {
+    font-size: 0.83rem;
+    line-height: 1.72;
+    color: var(--ink-faded);
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .article-body p {
+    margin-bottom: 0.6em;
+    text-indent: 1.1em;
+  }
+
+  .article-body p:first-child {
+    text-indent: 0;
+  }
+
+  .article-body p:first-child::first-letter {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 3em;
+    float: left;
+    line-height: 0.78;
+    margin: 0.05em 0.06em 0 0;
+    color: var(--ink);
+  }
+
+  .pull-quote {
+    border-top: 2px solid var(--rule);
+    border-bottom: 2px solid var(--rule);
+    margin: 12px 0;
+    padding: 8px 6px;
+    font-style: italic;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: var(--ink);
+    text-align: center;
+  }
+
+  /* ── RIGHT COLUMN ITEMS ── */
+  .notice-box {
+    border: 1px solid var(--rule);
+    padding: 10px 12px;
+    margin-bottom: 16px;
+    background: rgba(100,80,40,0.06);
+  }
+
+  .notice-box .notice-head {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 1px solid rgba(50,35,15,0.3);
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+  }
+
+  .notice-box .notice-body {
+    font-size: 0.75rem;
+    line-height: 1.65;
+    color: var(--ink-faded);
+    font-style: italic;
+  }
+
+  .classifieds {
+    margin-top: 4px;
+  }
+
+  .classified-item {
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: var(--ink-faded);
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(50,35,15,0.3);
+  }
+
+  .classified-item:last-child {
+    border-bottom: none;
+  }
+
+  .classified-item strong {
+    font-family: 'IM Fell English SC', serif;
+    color: var(--ink);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── BOTTOM BANNER ── */
+  .bottom-rule {
+    border-top: 3px double var(--rule);
+    margin-top: 20px;
+    padding-top: 8px;
+    text-align: center;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    color: var(--ink-very-faded);
+  }
+
+  /* ── BELOW-FOLD ARTICLE SPANNING FULL WIDTH ── */
+  .full-width-rule {
+    border: none;
+    border-top: 2px solid var(--rule);
+    margin: 20px 0 14px;
+  }
+
+  .two-col-article {
+    column-count: 2;
+    column-gap: 32px;
+    column-rule: 1px solid var(--rule);
+  }
+
+  .two-col-article .article-body p:first-child::first-letter {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 3em;
+    float: left;
+    line-height: 0.78;
+    margin: 0.05em 0.06em 0 0;
+    color: var(--ink);
+  }
+
+  .section-head {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--ink-very-faded);
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  .centered-headline {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 1.45rem;
+    line-height: 1.25;
+    color: var(--ink);
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  .centered-deck {
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--ink-faded);
+    text-align: center;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="broadsheet">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-eyebrow">Published at the Mouth of the Velverdyva · For River Trade & Common Discourse</div>
+    <div class="masthead-title">The Estuary Common</div>
+    <div class="masthead-rule"></div>
+    <div class="masthead-meta">
+      <span>Vol. XII, No. 34</span>
+      <span class="masthead-tagline">"Truth Floats — Even When the Bodies Don't"</span>
+      <span>Price: One Copper Penny</span>
+    </div>
+    <div class="masthead-rule"></div>
+  </header>
+
+  <!-- TWO-COLUMN BODY -->
+  <div class="body-columns">
+
+    <!-- LEFT COLUMN: main story -->
+    <div class="col-left">
+
+      <div class="article">
+        <div class="article-kicker">Road Incident · Nyr Dyv Eastern Coach Road</div>
+        <div class="article-headline large">A Man Meets His Own Corpse Upon the Road</div>
+        <div class="article-deck">A band of travellers, a mutant assailant, and a body carrying papers — the identity of which defies all reasonable explanation</div>
+
+        <div class="article-body">
+          <p>Travellers departing the Horse and Coaches Inn on the morning of last Godsday reported a scene of considerable violence upon the Eastern Coach Road, some four leagues out from the Velverdyva crossing — and more disturbing still, one which has left the local watch entirely at a loss for how to proceed.</p>
+          <p>The coach, carrying passengers recently arrived by river from the northern settlement of Northkeep, was brought to an unscheduled halt when the lead horses bolted upon sighting a figure standing in the roadway. The figure, described by witnesses as a man of large build bearing the unmistakeable signs of chaos-corruption — excess limbs being among the more printable details — had apparently already set upon an earlier traveller, whose body lay in the road.</p>
+          <p>The coachman, dragged some distance by the bolting horses, survived with injuries to his pride and both knees. The passengers were left to contend with the creature themselves.</p>
+
+          <div class="pull-quote">"It were not natural. None of it were. The horses knew first, and horses are seldom wrong about such things."<br><span style="font-size:0.75rem; font-style: normal; letter-spacing:0.05em;">— Helmut, senior coachman, now convalescing</span></div>
+
+          <p>The fight that followed was, by all accounts, a protracted and ugly affair. The creature demonstrated a preternatural resistance to being wounded, and was described as absorbing a considerable number of rapier thrusts before eventually yielding to its injuries. One traveller — a woman of considerable height and what observers called an "extremely practical attitude toward large opponents" — reportedly knocked it to the ground on several occasions, buying her companions the time required to finish the work.</p>
+          <p>The creature was dispatched. The horses were recovered. No further incidents were reported.</p>
+          <p>But the matter of the body in the road remains unresolved, and it is here that our account turns strange.</p>
+          <p>The deceased — a man of perhaps thirty years, dressed for travel — bore upon his person a set of documents of apparent official character. His face, however, was identified by multiple witnesses as being an exact likeness of one of the travellers then standing over him. The living man and the dead man were, in the words of one witness, "the same fellow, except one of them was breathing and the other emphatically was not."</p>
+          <p>The local watch has declined to speculate on the matter. This publication similarly declines to speculate, noting only that such things are, in our experience, never a coincidence.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COLUMN DIVIDER -->
+    <div class="col-divider"></div>
+
+    <!-- RIGHT COLUMN: secondary items -->
+    <div class="col-right">
+
+      <div class="article">
+        <div class="article-kicker">Inn Incident · The Horse and Coaches Inn</div>
+        <div class="article-headline">Crossbow Diplomacy Resolves Gambling Dispute at Estuary Inn</div>
+        <div class="article-deck">Gustav's five-shot repeater, as ever, proves persuasive</div>
+
+        <div class="article-body">
+          <p>An altercation broke out in the common room of the Estuary Coach Inn on the evening prior to the road incident described above, when a guest by the name of Phillipe — a man of cheerful countenance and, it transpired, flexible ethics — was observed by a fellow patron in the act of supplementing his luck at cards by means that no ruleset sanctions.</p>
+          <p>Phillipe attempted to depart. He was discouraged from doing so. He protested, with volume. The proprietor, one Gustav, produced the celebrated five-shot crossbow which regular patrons will be familiar with, and trained it upon all parties with what this correspondent can only describe as profound evenhandedness.</p>
+          <p>A negotiated settlement was reached. Phillipe returned the greater portion of his winnings. He was also, before departing, observed to catch one of his detainers in an attempted pickpocketing — an incident which appeared to cause both parties some mutual embarrassment.</p>
+          <p>No one was shot. Gustav was reported to be satisfied with the outcome.</p>
+        </div>
+      </div>
+
+      <div class="notice-box">
+        <div class="notice-head">A Brief Notice</div>
+        <div class="notice-body">
+          Regarding the coach departure of Godsday last: the delay of some two hours was caused by the indisposition of the coachmen, who had, by their own admission, "celebrated their last evening at the Estuary with insufficient restraint." Passengers are assured this was not a standard feature of the service. The coachmen were, by some means, restored to working order before the journey commenced, and no refund has been sought.
+        </div>
+      </div>
+
+      <div class="notice-box classifieds">
+        <div class="notice-head">Notices & Commercial Announcements</div>
+
+        <div class="classified-item">
+          <strong>Lost.</strong> One purse, dark leather, contents modest but sentimental. Last seen in the company of a man named Phillipe. Reward offered. Enquire at the inn.
+        </div>
+
+        <div class="classified-item">
+          <strong>Wanted.</strong> Reliable courier, northbound routes. Must have references. Must not be, or resemble, any currently wanted persons. Apply: Merchants' Quarter, Grayhawk.
+        </div>
+
+        <div class="classified-item">
+          <strong>Notice from the Watch.</strong> Members of the public who can shed light upon the identity of the deceased found upon the Eastern Coach Road on Godsday last are encouraged to present themselves at the Estuary Watch House. The deceased's effects have been retained. His face, we are told, may already be known to some.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FULL-WIDTH LOWER ARTICLE: departure from Northkeep -->
+  <hr class="full-width-rule">
+
+  <div class="section-head">Dispatches from the North · Received by River Post</div>
+  <div class="centered-headline">Heroes of Northkeep Depart Amid Great Ceremony; Earl Calls Them Saviours</div>
+  <div class="centered-deck">The northern fortification recovers from recent tribulations; its deliverers travel south toward Grayhawk City</div>
+
+  <div class="two-col-article">
+    <div class="article-body">
+      <p>Word has reached this publication by the river post that the settlement of Northkeep, in recent weeks the site of considerable distress, has seen its afflictions lifted by the intervention of a small band of outsiders whose names are not yet widely known in these southern reaches — though perhaps they soon shall be.</p>
+      <p>The Earl of Northkeep, Winvarle by name, reportedly delivered a speech of some warmth upon the occasion of the band's departure, naming them the Saviours of Northkeep before the assembled garrison and townsfolk. The precise nature of the threat they addressed has not been made available for publication; the Earl's office has communicated only that "matters of a serious nature have been satisfactorily resolved."</p>
+      <p>The group departed Northkeep by river, and have since been observed — not entirely to their own comfort — at various points along the Velverdyva, arriving at the Estuary in good health and apparently en route to the capital. We note, with no particular suggestion of connection, that they were among the passengers on the coach involved in the road incident described in our principal report above.</p>
+      <p>What business brings the Saviours of Northkeep to Grayhawk City, this paper does not know. We observe only that those who resolve one difficult matter are rarely permitted long to rest before a second presents itself. We wish them well, and intend to watch their progress with interest.</p>
+    </div>
+  </div>
+
+  <div class="bottom-rule">
+    The Estuary Common is printed weekly at the mouth of the Velverdyva · Correspondence welcome · The editors accept no liability for events described herein, including those which defy explanation
+  </div>
+
+</div>
+</body>
+</html>

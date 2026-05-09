@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Northkeep Affair — Chapter VII</title>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #2a221a;
+  }
+
+  body {
+    padding: 2.5rem 1rem;
+    font-family: 'IM Fell English', Georgia, serif;
+    color: #1a1206;
+    line-height: 1.65;
+  }
+
+  .book {
+    max-width: 740px;
+    margin: 0 auto;
+    background: #f1e6cd;
+    background-image:
+      radial-gradient(ellipse at 18% 8%, rgba(120,80,40,0.10) 0%, transparent 45%),
+      radial-gradient(ellipse at 82% 92%, rgba(120,80,40,0.10) 0%, transparent 45%),
+      radial-gradient(circle at 50% 50%, transparent 60%, rgba(80,50,20,0.08) 100%);
+    padding: 3.5rem 3.2rem 3rem;
+    box-shadow:
+      0 10px 40px rgba(0,0,0,0.45),
+      inset 0 0 90px rgba(180, 140, 80, 0.12);
+    border: 1px solid #8d7651;
+    position: relative;
+  }
+  .book::before {
+    content: '';
+    position: absolute;
+    inset: 9px;
+    border: 1px solid rgba(120, 90, 50, 0.25);
+    pointer-events: none;
+  }
+
+  /* Running head */
+  .running-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: #6b5635;
+    border-bottom: 1px solid rgba(107, 86, 53, 0.4);
+    padding-bottom: 0.55rem;
+    margin-bottom: 2.5rem;
+    text-transform: uppercase;
+  }
+
+  /* Chapter heading */
+  .chapter-marker {
+    text-align: center;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.45em;
+    color: #6b5635;
+    margin: 0.5rem 0 0.25rem;
+    text-transform: uppercase;
+  }
+  .chapter-number {
+    text-align: center;
+    font-family: 'UnifrakturMaguntia', serif;
+    font-size: 4.2rem;
+    line-height: 1;
+    color: #3a2710;
+    margin: 0;
+  }
+  .chapter-title {
+    text-align: center;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 1.45rem;
+    color: #3a2710;
+    margin: 0.4rem 0 1.5rem 0;
+    font-weight: normal;
+  }
+  .chapter-rule {
+    width: 80px;
+    height: 1px;
+    background: #6b5635;
+    margin: 1.5rem auto 2.5rem;
+    border: none;
+  }
+
+  /* Editor's introduction */
+  .editor-intro {
+    font-style: italic;
+    font-size: 0.97rem;
+    color: #2e1f0d;
+    margin-bottom: 2rem;
+    text-align: justify;
+  }
+  .editor-intro p { margin: 0.7rem 0; }
+  .editor-intro p:first-child { text-indent: 0; }
+  .editor-intro p:first-child::first-letter {
+    font-family: 'UnifrakturMaguntia', serif;
+    font-size: 3.4rem;
+    float: left;
+    line-height: 0.9;
+    margin-right: 0.4rem;
+    margin-top: 0.15rem;
+    color: #6b1a0a;
+    font-style: normal;
+  }
+  .editor-attribution {
+    text-align: right;
+    font-family: 'IM Fell English SC', serif;
+    font-style: normal;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    color: #6b5635;
+    margin-top: 0.5rem;
+  }
+
+  /* Letter framing */
+  .letter-block {
+    margin: 2.5rem 0;
+  }
+  .letter-heading {
+    text-align: center;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.3em;
+    color: #6b1a0a;
+    margin: 0 0 0.4rem 0;
+    text-transform: uppercase;
+  }
+  .letter-source {
+    text-align: center;
+    font-style: italic;
+    font-size: 0.86rem;
+    color: #5a4622;
+    margin-bottom: 1.7rem;
+    padding: 0 1rem;
+    line-height: 1.55;
+  }
+
+  .letter-body {
+    text-align: justify;
+    margin: 1.2rem 0;
+    font-size: 1.02rem;
+  }
+  .letter-body p {
+    margin: 0.75rem 0;
+    text-indent: 1.5rem;
+  }
+  .letter-body p.salutation,
+  .letter-body p.signoff,
+  .letter-body p.signature,
+  .letter-body p.postscript {
+    text-indent: 0;
+  }
+  .letter-body p.salutation {
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+  }
+  .letter-body p.signoff {
+    margin-top: 1.2rem;
+    text-align: right;
+  }
+  .letter-body p.signature {
+    font-family: 'UnifrakturMaguntia', serif;
+    font-size: 1.4rem;
+    text-align: right;
+    margin: 0.1rem 0 0.5rem;
+    color: #3a2710;
+  }
+  .letter-body .rank-line {
+    text-align: right;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    color: #5a4622;
+    margin: 0;
+    text-indent: 0;
+  }
+  .letter-body p.postscript {
+    margin-top: 1.4rem;
+    font-size: 0.96rem;
+    border-top: 1px dashed rgba(107, 86, 53, 0.45);
+    padding-top: 0.9rem;
+  }
+
+  .letter-body p:first-of-type::first-letter {
+    font-family: 'UnifrakturMaguntia', serif;
+    font-size: 3rem;
+    float: left;
+    line-height: 0.85;
+    margin-right: 0.4rem;
+    margin-top: 0.15rem;
+    color: #6b1a0a;
+  }
+
+  /* Ornamental break */
+  .ornament {
+    text-align: center;
+    font-family: 'IM Fell English', serif;
+    font-size: 1.4rem;
+    color: #6b5635;
+    margin: 3rem 0 2.5rem;
+    letter-spacing: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  /* Footnotes */
+  sup {
+    font-size: 0.7em;
+    font-family: 'IM Fell English SC', serif;
+    color: #6b1a0a;
+  }
+  .footnotes {
+    margin-top: 3rem;
+    border-top: 1px solid rgba(107, 86, 53, 0.5);
+    padding-top: 1rem;
+    font-size: 0.83rem;
+    color: #2e1f0d;
+  }
+  .footnotes p {
+    margin: 0.55rem 0;
+    text-indent: -1.6rem;
+    padding-left: 1.6rem;
+    text-align: justify;
+    line-height: 1.55;
+  }
+  .fn-num {
+    font-family: 'IM Fell English SC', serif;
+    font-weight: bold;
+    margin-right: 0.35rem;
+    color: #6b1a0a;
+  }
+
+  /* Page number */
+  .page-number {
+    text-align: center;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.3em;
+    color: #6b5635;
+    margin-top: 2.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(107, 86, 53, 0.3);
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .book {
+      box-shadow: none;
+      border: none;
+      background: white;
+      background-image: none;
+      max-width: 100%;
+      padding: 1.5cm 2cm;
+    }
+    .book::before { display: none; }
+  }
+</style>
+</head>
+<body>
+<article class="book">
+
+  <header class="running-head">
+    <span>The Northkeep Affair</span>
+    <span>Chapter VII</span>
+  </header>
+
+  <p class="chapter-marker">Chapter the Seventh</p>
+  <h1 class="chapter-number">VII</h1>
+  <p class="chapter-title">The Wolf at Both Ends of the Road</p>
+  <hr class="chapter-rule">
+
+  <section class="editor-intro">
+    <p>The events that came to be called the Northkeep Affair turned, as so much imperial history does, upon letters. Two are reproduced in the pages that follow. They were written within a single fortnight of one another, by men who never met, at opposite ends of a road that six travellers were then in the act of riding.</p>
+
+    <p>The first is from Dawnblade Corvin Thale, a senior field commander of the Inquisitors of the Sunlit Throne, addressed to a superior whose name the archivists have to this day declined to release.<sup>1</sup> The second is from Lord Edran, younger brother to the Earl of Northkeep, addressed to the Earl himself. Edran instructed his brother in the plainest possible terms to burn it. The Earl, against his brother's express wishes, did not — and so we have it.</p>
+
+    <p>Read together, the two describe the same small band of travellers from opposite ends of a balance scale: as suspects, from above; and as confederates, from below. Almost everything that followed flowed from the simple fact that the travellers reached the latter correspondent before they could be brought back into the hand of the former.</p>
+
+    <p class="editor-attribution">— A. C.</p>
+  </section>
+
+  <section class="letter-block">
+    <h2 class="letter-heading">Letter the First</h2>
+    <p class="letter-source">From Dawnblade Corvin Thale of the Inquisitors of the Sunlit Throne, written from the inn called the Seven Spokes. Inquisitorial Archive, file unmarked, declassified by special petition.</p>
+
+    <div class="letter-body">
+      <p class="salutation">To my Lord Inquisitor, greetings from the Seven Spokes —</p>
+
+      <p>I write you having concluded my interview with the party of adventurers I described in my dispatch of three days past. They had survived an ambush by a horde of mutants, no more than half a day's ride out of Northkeep itself. By the time the woodsmen reached me they had killed every one of their attackers, though one of their own — a woman, a warrior of considerable skill<sup>2</sup> — was very nearly carried out of the world by the wounds she had taken. A mutant of unusual elaboration is to be credited: it bore a beak of considerable size in place of one forearm, and a pair of poisoned tentacles sprouting from its torso. We burned the lot of them where they fell. I have noted the location for the cartographer; if a list is being kept of where Chaos most readily takes root in the Empire, the place belongs upon it.</p>
+
+      <p>When I came upon the survivors the warrior was delirious from her wounds and rambled in the way the wounded do, half prayer, half confession. Most of it was the usual nonsense. Some of it was not. She spoke of Northkeep, and would not stop speaking of it. A missing priestess. A dead courier. A church gone wrong in some manner she did not have the wit to name. A bell. And — I commit it to the page only because you and I have spoken of it — visions of Iuz.</p>
+
+      <p>I directed them to the inn at the Seven Spokes and followed at my own pace. By the time I arrived they were sufficiently restored that I could question them as full men and women rather than as casualties. They confirmed the warrior's fevered account in every particular and added a little to it. I demanded to see the documents I had reason to believe they were carrying — reports out of Northkeep bound, I now learn, for the Earl's brother in the capital. I was deflected.</p>
+
+      <p>The deflection came from a Paladin of Heironeous, one Dame Daisy Thunderfist, who invoked the privileges and the commission of her Order. I will say what is true. She is dedicated, devout, and unafraid. She holds her vows like a drawn sword; one feels the weight of them when she speaks. The Order should be proud of her. And yet — I record it here so that it is in the file — perhaps her Order is not as much in the light as it ought to be. She does not realise it yet. She will.</p>
+
+      <p>Before the Paladin closed the matter, the warrior had already volunteered, with the easy candour of someone repeating what she has been told to believe, that the documents are nothing — bureaucratic correspondence, dull reports, routine business. I do not think she was lying. I think she was lied to. The question that interests me is not what those papers say upon their face. It is why Northkeep, sitting upon what by every account is a flagrant and active outbreak of taint, is whispering to its kin in the capital instead of crying out to the Throne. There is a silence in the north that has the wrong shape.</p>
+
+      <p>The Paladin urged me, with some heat, to send help to Northkeep. I assured her that we would be going. We will. I have a hundred cloaks at my back, which is rather more than is required to render aid.</p>
+
+      <p>Aid is not what we are bringing.</p>
+
+      <p>I shall write again from the road.</p>
+
+      <p class="signoff">In service to the Throne and the long dawn,</p>
+      <p class="signature">Corvin Thale</p>
+      <p class="rank-line">Dawnblade of the Sunlit Throne</p>
+    </div>
+  </section>
+
+  <div class="ornament">⚜ ✦ ⚜</div>
+
+  <section class="letter-block">
+    <h2 class="letter-heading">Letter the Second</h2>
+    <p class="letter-source">From Lord Edran to his brother Winvarle, Earl of Northkeep. Recovered from the Earl's private papers; preserved, against the express instruction of its writer, by the recipient.</p>
+
+    <div class="letter-body">
+      <p class="salutation">Brother —</p>
+
+      <p>Your letter arrived this evening, by way of six very travel-stained adventurers. The courier you first entrusted it to never reached me; I gather from them that he never will. I gave the six gold for lodgings and sent them down to the river district to find their own beds — they are good people, by which I mean they are alive, which appears to be more than your courier managed.</p>
+
+      <p>I performed our old trick over the surface text and found what you intended me to find.<sup>3</sup> I shall not transcribe it here — you taught me the principle when we were boys: never write down what need not be written. I have burned all the letters. If anyone should ask, you sent me a letter about grain prices and the unseasonable weather.</p>
+
+      <p>But Winvarle. I owe you the other half of what you only wrote half-way.</p>
+
+      <p>I think you are right. I think it is worse than you have written.</p>
+
+      <p>You will recall that for some years now I have played the part you and I agreed I should play, here in the capital — the doddering uncle, soft in the head, soft in the spine, useful only for funerals and weddings and the polite consumption of wine. You laughed at me when I first proposed it. I thank you now. The role has had its uses. People speak in front of fools as they will not speak in front of brothers of earls. I have heard things.</p>
+
+      <p>The Black Cloaks are not what they were. Or rather — and this is what frightens me — some part of them is not what the rest of them is. There is a rot in the Order, and it is not at the bottom. The bottom is, by every account, doing precisely what the bottom of such an Order is meant to do. It is somewhere higher up that the worm is turning.</p>
+
+      <p>I have heard tell of a place south of the city — a clearing house, in the cant of merchants, though it handles no honest goods. Documents pass through it. Coin. Names. I do not yet know whose names, but I mean to. I cannot go myself; the role I have built will not survive a journey on horseback. But your adventurers can go, and I think they will.</p>
+
+      <p>If they find what I think is there, they must <em>not</em> bring it back to me. The capital is no longer a safe place to be holding such things. I shall tell them to carry whatever they find to Hardby, and into the hand of Captain Sereth Halvar of the Order of Heironeous, and no other hand. He sent the Paladin to you in the first place. He will know what to do with what they bring. He can be trusted, which is, I am sorry to write, a sentence I can compose about very few people at present.</p>
+
+      <p>Burn this when you have read it. Burn the envelope. Burn the wax. Then write me back about grain prices.</p>
+
+      <p class="signoff">Your brother, who loves you and is afraid for you,</p>
+      <p class="signature">Edran</p>
+
+      <p class="postscript"><strong>P.S.</strong> — The warrior in the party very nearly died upon the road. They were met at the Seven Spokes by a Dawnblade of the Inquisition, who has now ridden north with a hundred cloaks behind him. He is on his way to you. He is not coming with help. Brother — prepare.</p>
+    </div>
+  </section>
+
+  <footer>
+    <section class="footnotes">
+      <p><span class="fn-num">1.</span> The recipient is, by tradition, referred to in the secondary literature simply as <em>His Lordship</em>. The Sunlit Throne has never confirmed his identity, and the present author sees no useful purpose in speculating where she has no documents.</p>
+
+      <p><span class="fn-num">2.</span> Thale, characteristically, does not name her — a habit of his correspondence in this period; he was inclined to record the rank or function of a person before he troubled himself with the name. She is identified with confidence elsewhere in the record.</p>
+
+      <p><span class="fn-num">3.</span> "Our old trick" is presumed to refer to a private cipher of the brothers' boyhood. No example survives. The Earl's papers contain no key, and Edran was as good as his word about not committing such things to ink.</p>
+    </section>
+
+    <p class="page-number">— 134 —</p>
+  </footer>
+
+</article>
+</body>
+</html>

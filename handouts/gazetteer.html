@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Empire of Grayhawk Gazetteer - A comprehensive guide to the Empire's lands, peoples, and customs">
+    <meta name="theme-color" content="#8b7355">
+    <title>The Empire of Grayhawk Gazetteer - Imperial Grayhawk</title>
+    <link rel="icon" type="image/png" href="../Imperial_Shield.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=IM+Fell+DW+Pica:ital@0;1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .gazetteer-toc {
+            background: rgba(139, 111, 71, 0.08);
+            border: 1px solid rgba(139, 111, 71, 0.3);
+            padding: 24px 32px;
+            margin: 0 auto 48px;
+            max-width: 680px;
+        }
+
+        .gazetteer-toc h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1em;
+            color: var(--aged-brown);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .gazetteer-toc ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .gazetteer-toc > ol > li {
+            margin-bottom: 4px;
+        }
+
+        .gazetteer-toc ol ol {
+            padding-left: 20px;
+            margin-top: 2px;
+        }
+
+        .gazetteer-toc a {
+            color: var(--text-aged);
+            text-decoration: none;
+            font-size: 0.92em;
+            border: none;
+            background: none;
+            padding: 0;
+            box-shadow: none;
+            text-transform: none;
+            letter-spacing: normal;
+            font-weight: normal;
+            transition: color 0.2s;
+        }
+
+        .gazetteer-toc a:hover {
+            color: var(--aged-brown);
+        }
+
+        .gaz-section {
+            max-width: 720px;
+            margin: 0 auto 48px;
+        }
+
+        .gaz-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5em;
+            color: var(--aged-brown);
+            border-bottom: 1px solid rgba(139, 111, 71, 0.3);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            scroll-margin-top: 24px;
+        }
+
+        .gaz-section h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1em;
+            color: var(--aged-brown);
+            margin-top: 32px;
+            margin-bottom: 12px;
+            scroll-margin-top: 24px;
+        }
+
+        .gaz-section p {
+            margin-bottom: 16px;
+            line-height: 1.85;
+        }
+
+        .gaz-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .gaz-section ul li {
+            padding: 5px 0 5px 20px;
+            position: relative;
+            line-height: 1.75;
+        }
+
+        .gaz-section ul li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: var(--aged-gold);
+            font-size: 0.6em;
+            top: 9px;
+        }
+
+        .gaz-section ul li strong {
+            font-weight: bold;
+            color: var(--aged-brown);
+        }
+
+        .gazetteer-title {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .gazetteer-title h1 {
+            font-size: 2em;
+            margin-bottom: 0.1em;
+        }
+
+        .gazetteer-title .subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3em;
+            color: var(--aged-gold);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .gaz-map {
+            max-width: 100%;
+            border: 2px solid rgba(139, 111, 71, 0.4);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .gaz-map-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-aged);
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-frame">
+        <div class="ornate-border">
+            <div class="container">
+                <header role="banner">
+                    <h1>Imperial Grayhawk</h1>
+                    <div class="header-divider" aria-hidden="true">
+                        <img src="../assets/star.png" alt="" class="divider-star">
+                        <span class="divider-line"></span>
+                        <img src="../Imperial_Shield.png" alt="Imperial Shield of Grayhawk" class="header-logo">
+                        <span class="divider-line"></span>
+                        <img src="../assets/star.png" alt="" class="divider-star">
+                    </div>
+                </header>
+
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <a href="../index.html"
+                        style="color: var(--text-aged); text-decoration: none; font-size: 0.95em; opacity: 0.8; transition: opacity 0.2s; border: none; background: none; padding: 0; box-shadow: none; text-transform: none; letter-spacing: normal; font-weight: normal;">
+                        ← Back to Archive</a>
+                </div>
+
+                <main id="main-content" role="main">
+
+                    <div class="gazetteer-title">
+                        <p class="tagline">The Empire of Grayhawk</p>
+                        <p class="subtitle">Gazetteer</p>
+                    </div>
+
+                    <div class="section-divider" aria-hidden="true"><span>◆</span></div>
+
+                    <nav aria-label="Table of contents" class="gazetteer-toc">
+                        <h3>Contents</h3>
+                        <ol>
+                            <li><a href="#intro">I. Introduction</a></li>
+                            <li><a href="#thousand-year">II. A Thousand Year Empire</a></li>
+                            <li>
+                                <a href="#three-pillars">III. The Three Pillars of Imperial Power</a>
+                                <ol>
+                                    <li><a href="#noble-houses">III.a. The Noble Houses</a></li>
+                                    <li><a href="#guild-compact">III.b. The Guild Compact</a></li>
+                                    <li><a href="#circle-of-eight">III.c. The Circle of Eight</a></li>
+                                </ol>
+                            </li>
+                            <li>
+                                <a href="#provinces">IV. The Imperial Provinces</a>
+                                <ol>
+                                    <li><a href="#grayhawk">IV.a. The Domain of Grayhawk</a></li>
+                                    <li><a href="#furyondy">IV.b. Furyondy</a></li>
+                                    <li><a href="#veluna">IV.c. Veluna</a></li>
+                                    <li><a href="#verbobonc">IV.d. Verbobonc</a></li>
+                                    <li><a href="#ulek-duchy">IV.e. Dutchy of Ulek</a></li>
+                                    <li><a href="#keoland">IV.f. Keoland</a></li>
+                                    <li><a href="#pomarj">IV.g. Pomarj</a></li>
+                                    <li><a href="#bright-lands">IV.h. Bright Lands</a></li>
+                                    <li><a href="#urnst-duchy">IV.j. Duchy of Urnst</a></li>
+                                    <li><a href="#urnst-county">IV.k. County of Urnst</a></li>
+                                </ol>
+                            </li>
+                            <li>
+                                <a href="#religion">V. Major Religious Organisations</a>
+                                <ol>
+                                    <li><a href="#pelor">V.a. The Imperial Church of Pelor</a></li>
+                                    <li><a href="#heironeous">V.b. The Order of Heironeous</a></li>
+                                    <li><a href="#faiths-relations">V.c. Relations Between the Faiths</a></li>
+                                </ol>
+                            </li>
+                            <li>
+                                <a href="#threats">VI. An Empire Under Threat</a>
+                                <ol>
+                                    <li><a href="#dim-forest">VI.a. Dim Forest Tribes</a></li>
+                                    <li><a href="#barrier-peaks">VI.b. Orcs of the Barrier Peaks</a></li>
+                                    <li><a href="#bone-march">VI.c. The Bone March Hordes</a></li>
+                                    <li><a href="#nyrond">VI.d. Nyrond, Eastern Rival</a></li>
+                                    <li><a href="#great-kingdom">VI.e. The Great Kingdom and the North Kingdom</a></li>
+                                    <li><a href="#sea-princes">VI.f. The Sea Princes</a></li>
+                                    <li><a href="#baklunish">VI.g. The Baklunish West</a></li>
+                                    <li><a href="#northern-marches">VI.h. Rumors from the Northern Marches</a></li>
+                                </ol>
+                            </li>
+                            <li><a href="#map">Imperial Map</a></li>
+                        </ol>
+                    </nav>
+
+                    <div class="section-divider" aria-hidden="true"><span>◆</span></div>
+
+                    <!-- I. Introduction -->
+                    <section class="gaz-section">
+                        <h2 id="intro">I. Introduction</h2>
+                        <p>The Empire of Greyhawk is a sprawling and ancient dominion spanning the continent of Oerik within the world of Oerth. Founded over a millennium ago in response to existential threats, it is a realm where arcane power, noble ambition, and mercantile interests intertwine. This gazetteer offers a glimpse into the empire's complex political structures, diverse provinces, and the ever-present challenges it faces.</p>
+                    </section>
+
+                    <div class="section-divider" aria-hidden="true"><span>◆</span></div>
+
+                    <!-- II. A Thousand Year Empire -->
+                    <section class="gaz-section">
+                        <h2 id="thousand-year">II. A Thousand Year Empire</h2>
+                        <p>The thousand-year empire of Greyhawk is ruled by Emperor Alaric Drachenfels, a ruler whose name commands respect and awe throughout the realm. Supporting, influencing, and often interfering with his rule are the three pillars of power: the Noble Houses, the Guild Compact, and the Circle of Eight.</p>
+                        <p>The empire was founded in a time of dire need, when a great alliance was forged to repel the menace of Iuz. The founder of the empire, Emperor Sigismund Drachenfels, is now a figure of near demigod mythology. He wielded a legendary magical warhammer known as the Hammer of Unity, which has since been passed down as a symbol of imperial rule and authority.</p>
+                    </section>
+
+                    <div class="section-divider" aria-hidden="true"><span>◆</span></div>
+
+                    <!-- III. The Three Pillars -->
+                    <section class="gaz-section">
+                        <h2 id="three-pillars">III. The Three Pillars of Imperial Power</h2>
+
+                        <h3 id="noble-houses">III.a. The Noble Houses</h3>
+                        <p>The noble families of the Greyhawk Empire form the backbone of its aristocratic tradition. Each house holds sway over lands, armies, and ancient privileges, and their rivalries shape the empire's politics as much as any decree from the capital. Some are fiercely loyal to the imperial court, while others nurse ambitions of autonomy or dominance. Their influence is felt in every province, from the courts of Verbobonc to the halls of Keoland.</p>
+                        <ul>
+                            <li><strong>House Secunforth:</strong> Old money, conservative, deeply tied to Greyhawk City's bureaucracy.</li>
+                            <li><strong>House Zolaren:</strong> Militaristic and expansionist, with strong ties to Furyondy's border forces.</li>
+                            <li><strong>House Darmen:</strong> Merchant-bankers with subtle influence across Dyvers and Urnst.</li>
+                            <li><strong>House Caldrith:</strong> Keoland's proud lineage, often at odds with imperial centralization.</li>
+                        </ul>
+
+                        <h3 id="guild-compact">III.b. The Guild Compact</h3>
+                        <p>The Guild Compact is a formal alliance of trade, craft, and mercantile guilds that operate across the empire. Though not noble, their economic power rivals the aristocracy. The Compact ensures standardized tariffs, trade routes, and labor laws, but beneath its polished exterior lies a web of corruption, espionage, and factionalism.</p>
+                        <ul>
+                            <li><strong>Merchants' Guild:</strong> Controls trade permits and tariffs; deeply embedded in Dyvers and Greyhawk.</li>
+                            <li><strong>River Bargemen:</strong> Operate the Velverdyva and Nyr Dyv routes; fiercely independent.</li>
+                            <li><strong>Artificers' Guild:</strong> Makers of magical and mundane devices; tied to Ulek and Bright Lands.</li>
+                            <li><strong>Scribes &amp; Scriveners:</strong> Keepers of contracts, records, and secrets; often aligned with noble houses.</li>
+                        </ul>
+
+                        <h3 id="circle-of-eight">III.c. The Circle of Eight</h3>
+                        <p>The true identities of the Circle of Eight remain shrouded in secrecy, yet their control over the empire's arcane bureaucracy is undeniable. This technocratic cabal wields immense influence behind the scenes, shaping magical policy, defense strategies, and imperial diplomacy with calculated precision. Rumored members include master strategists and powerful mages:</p>
+                        <ul>
+                            <li><strong>Mordenkarl:</strong> The enigmatic leader and chief strategist, guiding the Circle's covert operations.</li>
+                            <li><strong>Bergfried:</strong> A formidable war mage and tactician, closely aligned with Furyondy's military interests.</li>
+                            <li><strong>Jarlhelm:</strong> A master of arcane lore and diplomacy, weaving influence through imperial courts.</li>
+                            <li><strong>Ottomar:</strong> Patron of magical arts and cultural diplomacy, a subtle force in imperial affairs.</li>
+                        </ul>
+                        <p>Their bureaucratic power extends through layers of arcane administrators and advisors, ensuring the Circle's will permeates every corner of the empire's magical governance.</p>
+                    </section>
+
+                    <div class="section-divider" aria-hidden="true"><span>◆</span></div>
+
+                    <!-- IV. Imperial Provinces -->
+                    <section class="gaz-section">
+                        <h2 id="provinces">IV. The Imperial Provinces</h2>
+                        <p>The Empire of Greyhawk spans a vast and diverse continent, home to many cultures and landscapes. Each province reflects the complex tapestry of imperial rule and local tradition, contributing to the strength and challenges of the realm.</p>
+
+                        <h3 id="grayhawk">IV.a. The Domain of Grayhawk</h3>
+                        <p>The imperial capital — cosmopolitan, corrupt, and brilliant. Guilds, nobles, and arcane advisors jostle for influence while the imperial court strains to hold the realm together. Situated on the fertile plains near the Nyr Dyv, its strategic location makes it the heart of commerce and politics.</p>
+
+                        <h3 id="furyondy">IV.b. Furyondy</h3>
+                        <p>A proud military province scarred by war with Iuz. Its knights and warlords demand vigilance, but its loyalty to the empire is fraying. The rugged hills and dense forests provide natural defenses and harsh training grounds.</p>
+
+                        <h3 id="veluna">IV.c. Veluna</h3>
+                        <p>The spiritual heart of the empire, ruled by the Canon of Rao. Peaceful on the surface, but its temples and scholars are divided over imperial policy. Nestled among rolling hills and river valleys, it is a land of serene beauty and quiet contemplation.</p>
+
+                        <h3 id="verbobonc">IV.d. Verbobonc</h3>
+                        <p>A noble city of old traditions and strategic importance. Its viscount walks a tightrope between imperial loyalty and regional pride. Located on the edge of the Velverdyva River, its fertile lands support a prosperous agricultural economy.</p>
+
+                        <h3 id="ulek-duchy">IV.e. Dutchy of Ulek</h3>
+                        <p>A dwarven-led province rich in mines and craftsmanship. Loyal but insular, Ulek resists imperial meddling and guards its ancient customs. Its mountainous terrain is dotted with deep mines and fortified strongholds.</p>
+
+                        <h3 id="keoland">IV.f. Keoland</h3>
+                        <p>Once a mighty kingdom, now a semi-autonomous imperial province. Its nobles remember independence, and its coastal cities hum with trade and ambition. Stretching along the western coast, its harbors and fertile plains fuel its wealth.</p>
+
+                        <h3 id="pomarj">IV.g. Pomarj</h3>
+                        <p>A lawless frontier reclaimed by imperial decree. Bandits, mercenaries, and exiles vie for control. The empire's grip is tenuous, and dark forces gather in its ruined keeps. Its harsh deserts and rocky outcrops challenge any who seek to tame it.</p>
+
+                        <h3 id="bright-lands">IV.h. Bright Lands</h3>
+                        <p>A sun-scorched province ruled by the enigmatic wizard Rary. Officially loyal, but deeply isolated. Rumors swirl of magical experiments and forbidden lore beneath its golden sands and barren plateaus.</p>
+
+                        <h3 id="urnst-duchy">IV.j. Duchy of Urnst</h3>
+                        <p>A cultured province of art, wine, and quiet ambition. Its duchess plays the long game, balancing diplomacy and espionage. Rolling vineyards and gentle hills define its landscape.</p>
+
+                        <h3 id="urnst-county">IV.k. County of Urnst</h3>
+                        <p>Rural, fertile, and fiercely proud. The count's court is a haven for reformers and dissidents. Its rich farmlands and dense woodlands sustain its independent spirit.</p>
+                    </section>
+
+                    <div class="section-divider" aria-hidden="true"><span>◆</span></div>
+
+                    <!-- V. Religion -->
+                    <section class="gaz-section">
+                        <h2 id="religion">V. Major Religious Organisations of the Empire</h2>
+                        <p>Faith plays a central role in the life of the Empire of Greyhawk. While countless deities are honored across its provinces, two great religious institutions stand above all others in influence, tradition, and public presence. Their temples, orders, and clergy shape civic life, advise rulers, and provide spiritual guidance to citizens throughout the realm.</p>
+
+                        <h3 id="pelor">V.a. The Imperial Church of Pelor</h3>
+                        <p>The largest and most widely recognized religious body in the empire is the Imperial Church of Pelor, devoted to the god of the sun, healing, and renewal. Pelor's worship predates the founding of the empire, but the church rose to prominence during the age of alliances that forged the imperial state. Its temples are found in every major city, and its clergy serve as healers, scholars, and moral advisors to communities across the realm.</p>
+                        <p>The church emphasizes charity, justice, and the protection of the innocent. Its hierarchy is well-organized, with regional prelacies reporting to the High Basilica in Greyhawk City. The Imperial Church maintains close ties with several ministries, particularly those concerned with public welfare, education, and diplomacy. While its influence is considerable, the church is generally regarded as a stabilizing force, promoting unity and compassion throughout the empire.</p>
+
+                        <h3 id="heironeous">V.b. The Order of Heironeous</h3>
+                        <p>Alongside Pelor's church stands the Order of Heironeous, a proud and ancient martial faith dedicated to the god of valor, honor, and righteous conflict. The order's roots lie in the borderlands and frontier provinces, where its knights and war-priests long served as defenders against raiders, monsters, and foreign threats. Many of the empire's most storied military traditions trace their lineage to Heironean orders.</p>
+                        <p>The Order of Heironeous is less centralized than the Imperial Church of Pelor. Its temples and fortresses are often tied to local traditions, noble houses, or military companies. Despite this regional character, the order maintains a strong sense of shared purpose: the defense of the realm, the upholding of honorable conduct, and the pursuit of justice through strength and discipline.</p>
+                        <p>Heironean clergy frequently serve as battlefield chaplains, advisors to provincial commanders, and arbiters in matters of honor. Their presence is especially strong in Furyondy, Verbobonc, and the Ulek states, where their traditions run deep.</p>
+
+                        <h3 id="faiths-relations">V.c. Relations Between the Faiths</h3>
+                        <p>Though differing in emphasis and temperament, the Imperial Church of Pelor and the Order of Heironeous share a long history of cooperation. Pelor's clergy provide healing and guidance, while Heironeous' followers stand as stalwart defenders of the empire's borders. Joint festivals, councils, and charitable works are common, and both institutions are widely respected by the populace.</p>
+                        <p>Together, these two great faiths form a spiritual foundation for the empire, offering hope in times of hardship and strength in times of danger.</p>
+                    </section>
+
+                    <div class="section-divider" aria-hidden="true"><span>◆</span></div>
+
+                    <!-- VI. Threats -->
+                    <section class="gaz-section">
+                        <h2 id="threats">VI. An Empire Under Threat</h2>
+                        <p>The Empire of Greyhawk, while dominant in the Flanaess, faces persistent external pressures necessitating constant vigilance and strategic response. The following summary outlines principal threats influencing imperial policy and military posture.</p>
+
+                        <h3 id="dim-forest">VI.a. Dim Forest Tribes</h3>
+                        <p>Located southwest of the imperial core, the Dim Forest harbors independent tribes including gnolls, bugbears, and humans rejecting imperial authority. Their sporadic raids into Keoland and Ulek require ongoing provincial cooperation and patrols.</p>
+
+                        <h3 id="barrier-peaks">VI.b. Orcs of the Barrier Peaks</h3>
+                        <p>The rugged Barrier Peaks to the west shelter numerous territorial orc clans. Their unpredictable incursions into Ulek and Keoland, often exploiting environmental and internal tribal factors, represent a sustained strategic concern.</p>
+
+                        <h3 id="bone-march">VI.c. The Bone March Hordes</h3>
+                        <p>Northeast lies the Bone March, dominated by humanoid warlords including orcs and gnolls. Though not bordering the empire directly, their instability affects regional trade and security, warranting careful monitoring.</p>
+
+                        <h3 id="nyrond">VI.d. Nyrond, Eastern Rival</h3>
+                        <p>The Kingdom of Nyrond remains a proud, militarized neighbor with a tradition of self-rule. Relations are peaceful but competitive, requiring balanced strength and diplomacy along the eastern frontier.</p>
+
+                        <h3 id="great-kingdom">VI.e. The Great Kingdom and the North Kingdom</h3>
+                        <p>The fractured successor states of the Great Kingdom to the northeast are unstable and unpredictable. Imperial diplomacy maintains a cautious presence to prevent resurgence of unified power.</p>
+
+                        <h3 id="sea-princes">VI.f. The Sea Princes</h3>
+                        <p>Southwest coastal waters are threatened by the Sea Princes, whose navy and privateers disrupt imperial shipping. A steady naval presence in the Azure Sea is essential to counter these maritime threats.</p>
+
+                        <h3 id="baklunish">VI.g. The Baklunish West</h3>
+                        <p>Beyond the Barrier Peaks, the culturally distinct Baklunish West nations maintain generally stable but occasionally strained relations with the empire. Their influence on western trade routes is significant.</p>
+
+                        <h3 id="northern-marches">VI.h. Rumors from the Northern Marches</h3>
+                        <p>Though the empire was founded in an age when a great alliance rose to repel the menace of Iuz, the northern frontier remains a land of unease. Travelers and scouts occasionally report strange gatherings in the wastelands beyond Furyondy — tales of a figure bearing the old name, or of warbands moving under unfamiliar banners.</p>
+                        <p>No official confirmation supports these claims, and the Ministry of War maintains that Iuz's defeat generations ago ended his threat for good. Still, the persistence of such stories has led to increased patrols and quiet diplomatic inquiries. Whether these rumors reflect isolated frontier troubles or something more organized remains uncertain.</p>
+
+                        <div class="section-divider" aria-hidden="true"><span>◆</span></div>
+
+                        <p><em>The Empire of Greyhawk stands vigilant amid diverse external challenges. Through strategic vigilance, diplomacy, unity, and the might of the Emperor, it endeavors to preserve peace and stability across its territories.</em></p>
+                    </section>
+
+                    <div class="section-divider" aria-hidden="true"><span>◆</span></div>
+
+                    <!-- Map -->
+                    <section class="gaz-section" style="max-width: 900px;">
+                        <h2 id="map">Imperial Map</h2>
+                        <img src="../maps/The Empire of Grayhawk.jpg" alt="Map of the Empire of Grayhawk" class="gaz-map">
+                        <p class="gaz-map-caption">The Empire of Greyhawk and surrounding territories. Imperial borders marked in pink.</p>
+                    </section>
+
+                </main>
+
+                <footer role="contentinfo"
+                    style="margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); text-align: center;">
+                    <div class="footer-decorations" aria-hidden="true">
+                        <span class="footer-line"></span>
+                        <img src="../assets/seal.png" alt="" class="wax-seal"
+                            style="width: 40px; height: 40px; opacity: 0.6;">
+                        <span class="footer-line"></span>
+                    </div>
+                    <p style="color: var(--text-aged); font-size: 0.9em; margin-top: 20px;">Imperial Grayhawk Campaign Archive</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

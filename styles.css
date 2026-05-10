@@ -1,5 +1,7 @@
 /* Imperial Grayhawk - Warhammer Fantasy Inspired Styling */
 
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
 :root {
     --parchment-light: #f7e9d0;
     --parchment: #ead5b0;
@@ -24,7 +26,7 @@
 }
 
 body {
-    font-family: 'IM Fell DW Pica', 'Garamond', 'Palatino', 'Book Antiqua', 'Georgia', serif;
+    font-family: 'Lora', 'Georgia', 'Palatino', serif;
     background: radial-gradient(ellipse at center, #3d2849 0%, #1f1426 100%);
     background-attachment: fixed;
     color: var(--text-dark);
@@ -488,6 +490,15 @@ box-shadow: 0 4px 12px var(--shadow);
 /* Lore section styling */
 .lore-text h3 {
     margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-family: 'Cinzel', 'Georgia', serif;
+    font-size: 0.95rem;
+    color: var(--deep-red);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(139, 111, 71, 0.25);
+    padding-bottom: 4px;
 }
 
 .lore-text h3:first-child {
@@ -497,6 +508,11 @@ box-shadow: 0 4px 12px var(--shadow);
 .lore-text ul {
     margin-left: 1.5em;
     padding-left: 0;
+}
+
+.lore-text li {
+    margin-bottom: 0.3em;
+    line-height: 1.7;
 }
 
 .lore-text blockquote {

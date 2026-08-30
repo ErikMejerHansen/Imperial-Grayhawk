@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Session 7 - The Counting Song, or, A Tally Made at Grayhawk and Found Not to Agree">
+    <meta name="theme-color" content="#8b7355">
+    <title>Session 7 - Imperial Grayhawk</title>
+    <link rel="icon" type="image/png" href="../Imperial_Shield.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=IM+Fell+DW+Pica:ital@0;1&family=IM+Fell+English+SC&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        /* ── The song sheet: cheap paper, worse printing ── */
+        .song-sheet {
+            max-width: 620px;
+            margin: 0 auto;
+            background: #ded2b4;
+            background-image:
+                radial-gradient(ellipse at 15% 8%, rgba(140, 110, 60, 0.16) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 92%, rgba(110, 85, 40, 0.13) 0%, transparent 45%);
+            padding: 2.5rem 2.25rem 2rem;
+            box-shadow: 0 4px 22px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(90, 70, 35, 0.35);
+            color: #221a12;
+        }
+
+        /* ── Masthead ── */
+        .sheet-head {
+            text-align: center;
+            border-bottom: 3px double #2a2018;
+            padding-bottom: 1rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .sheet-price {
+            font-family: 'IM Fell English SC', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.22em;
+            color: #6b5a3e;
+            margin-bottom: 0.6rem;
+        }
+
+        .sheet-title {
+            font-family: 'IM Fell English SC', serif;
+            font-size: 2rem;
+            line-height: 1.05;
+            margin: 0;
+            color: #1a1410;
+            /* the press was not level */
+            transform: rotate(-0.5deg);
+        }
+
+        .sheet-subtitle {
+            font-family: 'IM Fell DW Pica', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #3a2e22;
+            margin-top: 0.55rem;
+            line-height: 1.4;
+        }
+
+        .sheet-tune {
+            font-family: 'IM Fell DW Pica', serif;
+            font-size: 0.78rem;
+            font-style: italic;
+            color: #6b5a3e;
+            margin-top: 1rem;
+            line-height: 1.6;
+        }
+
+        /* ── Verses ── */
+        .verse {
+            font-family: 'IM Fell DW Pica', serif;
+            font-size: 1.02rem;
+            line-height: 1.75;
+            margin: 0 0 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .verse.ink-light { opacity: 0.72; }
+
+        .verse.ink-heavy { color: #0f0b07; }
+
+        .struck {
+            text-decoration: line-through;
+            text-decoration-color: rgba(60, 45, 25, 0.75);
+            opacity: 0.5;
+        }
+
+        /* ── The chorus, with its tally ── */
+        .chorus {
+            position: relative;
+            font-family: 'IM Fell DW Pica', serif;
+            font-style: italic;
+            font-size: 1.02rem;
+            line-height: 1.75;
+            margin: 2rem 0 2rem 1.5rem;
+            padding: 0.9rem 0 0.9rem 1.6rem;
+            border-left: 2px solid rgba(60, 45, 25, 0.4);
+        }
+
+        /* Chalk tallies in the margin — the count that stops agreeing */
+        .tally {
+            position: absolute;
+            left: -3.6rem;
+            top: 1.1rem;
+            display: flex;
+            gap: 3px;
+            opacity: 0.62;
+        }
+
+        .tally .mark {
+            width: 2px;
+            height: 17px;
+            background: #3a2e22;
+        }
+
+        .tally.crossed::after {
+            content: '';
+            position: absolute;
+            left: -3px;
+            top: 4px;
+            width: 30px;
+            height: 2px;
+            background: #3a2e22;
+            transform: rotate(-24deg);
+        }
+
+        .tally.doubtful::after {
+            content: '?';
+            position: absolute;
+            left: 32px;
+            top: -3px;
+            font-family: 'IM Fell DW Pica', serif;
+            font-size: 1.1rem;
+            color: #6b1f1f;
+        }
+
+        /* ── Rules and colophon ── */
+        .sheet-rule {
+            border: none;
+            border-top: 1px solid rgba(60, 45, 25, 0.45);
+            margin: 2rem 0;
+        }
+
+        .printers-note {
+            font-family: 'IM Fell DW Pica', serif;
+            font-size: 0.8rem;
+            font-style: italic;
+            color: #5a4a32;
+            line-height: 1.65;
+            border-top: 3px double #2a2018;
+            padding-top: 1rem;
+            margin-top: 2.25rem;
+        }
+
+        .hand {
+            font-family: 'IM Fell DW Pica', serif;
+            font-style: italic;
+            font-size: 0.82rem;
+            color: #4a3a24;
+            transform: rotate(-1.2deg);
+            display: block;
+            margin: 1.25rem 0 0 2rem;
+            opacity: 0.85;
+        }
+
+        @media (max-width: 700px) {
+            .song-sheet { padding: 1.75rem 1.25rem 1.5rem; }
+            .sheet-title { font-size: 1.5rem; }
+            .verse, .chorus { padding-left: 0; font-size: 0.98rem; }
+            .chorus { margin-left: 0; padding-left: 1rem; }
+            .tally { position: static; margin-bottom: 0.6rem; }
+            .tally.crossed::after, .tally.doubtful::after { display: none; }
+        }
+
+        @media print {
+            body { background: #fff; }
+            .song-sheet { box-shadow: none; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-frame">
+        <div class="ornate-border">
+            <div class="container">
+                <header role="banner">
+                    <h1>Session 7</h1>
+                    <div class="header-divider" aria-hidden="true">
+                        <img src="../assets/star.png" alt="" class="divider-star">
+                        <span class="divider-line"></span>
+                        <img src="../Imperial_Shield.png" alt="Imperial Shield of Grayhawk" class="header-logo">
+                        <span class="divider-line"></span>
+                        <img src="../assets/star.png" alt="" class="divider-star">
+                    </div>
+                </header>
+
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <a href="../index.html"
+                        style="color: var(--text-aged); text-decoration: none; font-size: 0.95em; opacity: 0.8; transition: opacity 0.2s; border: none; background: none; padding: 0; box-shadow: none; text-transform: none; letter-spacing: normal; font-weight: normal;">
+                        ← Back to Archive</a>
+                </div>
+
+                <main id="main-content" role="main">
+                    <div class="song-sheet">
+
+                        <div class="sheet-head">
+                            <div class="sheet-price">A Penny Sheet &middot; Sold at the Water-Stair</div>
+                            <h2 class="sheet-title">The Counting Song</h2>
+                            <p class="sheet-subtitle">or, A Tally Made at Grayhawk<br>and Found Not to Agree</p>
+                            <p class="sheet-tune">
+                                To be sung to the tune of <em>The Wide Selintan</em>.<br>
+                                Suitable for hauling, loading, and idle hands.
+                            </p>
+                        </div>
+
+                        <p class="verse">
+                            There came a man from Ket one night<br>
+                            with road-dust in his shoe,<br>
+                            who named a town we'd not yet reached<br>
+                            and half the things we knew.
+                        </p>
+
+                        <p class="verse">
+                            He said the world was winding down<br>
+                            the way a clock runs slow,<br>
+                            then set his cup upon the board<br>
+                            and told us: <em>Whitebridge. Go.</em>
+                        </p>
+
+                        <div class="chorus">
+                            <span class="tally" aria-hidden="true">
+                                <span class="mark"></span><span class="mark"></span><span class="mark"></span><span class="mark"></span>
+                            </span>
+                            So count 'em out and count 'em in,<br>
+                            chalk the barrel, chalk the tin;<br>
+                            what the wagon carries out<br>
+                            the ledger carries in.
+                        </div>
+
+                        <p class="verse">
+                            Five went up to Grayhawk Hall<br>
+                            with ink upon their sleeves<br>
+                            and swore they wrote a scholar's book<br>
+                            on tolls and tithes and sheaves.
+                        </p>
+
+                        <p class="verse">
+                            There was Tyrone and there was Linda,<br>
+                            Ponder with a pen,<br>
+                            and Zaphriel, who held too still,<br>
+                            and a Lady of Heironeous<br>
+                            who'd not told a lie till then.
+                        </p>
+
+                        <p class="verse">
+                            The clerk was pleased, the clerk was proud —<br>
+                            no soul had asked before.<br>
+                            He lit a lamp, he found a key,<br>
+                            he opened up the door.
+                        </p>
+
+                        <p class="verse ink-light">
+                            Oh, grain returns and cart repairs,<br>
+                            and salt, and stone, and slate,<br>
+                            and ninety years of nothing much<br>
+                            all weighed and writ in state.
+                        </p>
+
+                        <div class="chorus">
+                            <span class="tally" aria-hidden="true">
+                                <span class="mark"></span><span class="mark"></span><span class="mark"></span><span class="mark"></span>
+                            </span>
+                            So count 'em out and count 'em in,<br>
+                            chalk the barrel, chalk the tin;<br>
+                            the book says forty left the yard —<br>
+                            now count 'em in. Count 'em in.
+                        </div>
+
+                        <p class="verse ink-heavy">
+                            For Northkeep cried for grain and beams<br>
+                            three hungry winters long.<br>
+                            The carts went out. The carts went on.<br>
+                            The road they took was wrong.
+                        </p>
+
+                        <p class="verse ink-heavy">
+                            And someone sent to Northkeep, too,<br>
+                            a week ago, or so:<br>
+                            black upon the drivers' backs —<br>
+                            the first in years to go.
+                        </p>
+
+                        <p class="verse ink-heavy">
+                            And south, and south, and south again:<br>
+                            tents by the hundredweight,<br>
+                            pikes and picks and scaling-hooks<br>
+                            and engines for a gate.
+                        </p>
+
+                        <p class="verse ink-heavy">
+                            Now who's at war? No one's at war.<br>
+                            The Empire's calm as glass.<br>
+                            But someone's packed a siege train up<br>
+                            and walked it down the pass.
+                        </p>
+
+                        <p class="verse struck">
+                            And I could say who signed for it,<br>
+                            and I could say for where,<br>
+                            and I could say what waits for them<br>
+                            when all of it gets there.
+                        </p>
+
+                        <p class="verse">
+                            And in the margin, small and dry,<br>
+                            in ink another wrote:<br>
+                            a Cloak that keeps the Whitebridge toll<br>
+                            with letters in his coat.
+                        </p>
+
+                        <div class="chorus">
+                            <span class="tally crossed" aria-hidden="true">
+                                <span class="mark"></span><span class="mark"></span><span class="mark"></span><span class="mark"></span>
+                            </span>
+                            So count 'em out and count 'em in,<br>
+                            chalk the barrel, chalk the tin;<br>
+                            and if the sum will not come right,<br>
+                            best not to say to whom.
+                        </div>
+
+                        <hr class="sheet-rule">
+
+                        <p class="verse">
+                            Now Zaphriel went walking where<br>
+                            the honest never tread,<br>
+                            to buy a jar of quiet things<br>
+                            that leave a fellow dead.
+                        </p>
+
+                        <p class="verse">
+                            He found no jar. He found a man<br>
+                            he'd left in another town,<br>
+                            who smiled, and used his given name,<br>
+                            and asked what he owed now.
+                        </p>
+
+                        <p class="verse">
+                            Down along the river quarter<br>
+                            a preacher tore his shirt:<br>
+                            <em>the world is ending, sinners, hear!</em> —<br>
+                            and no one heard a word.
+                        </p>
+
+                        <p class="verse">
+                            They walked on by. They'd had their fill<br>
+                            of endings for the day.<br>
+                            They'd read one in a ledger<br>
+                            not four hours away.
+                        </p>
+
+                        <p class="verse">
+                            And in the inn, a cheerful voice,<br>
+                            an old friend of Linda's, he,<br>
+                            with a barge, a plan, a spring-faire crowd,<br>
+                            and a barrel stretched to three.
+                        </p>
+
+                        <p class="verse">
+                            He wants a crew. He'll pay in coin.<br>
+                            He'll pay in something more:<br>
+                            a boat that's headed where they're bound<br>
+                            and no one asks what for.
+                        </p>
+
+                        <div class="chorus">
+                            <span class="tally doubtful" aria-hidden="true">
+                                <span class="mark"></span><span class="mark"></span><span class="mark"></span>
+                            </span>
+                            So count 'em out and count 'em in,<br>
+                            chalk the barrel, chalk the tin —<br>
+                            count the carts that went up north.<br>
+                            <br>
+                            Count 'em out, boys.<br>
+                            Don't count them in.
+                        </div>
+
+                        <p class="printers-note">
+                            Printed at the sign of the Broken Quill, off the water-stair, Grayhawk.
+                            Sung this spring by bargemen of the Selintan and by nobody important.
+                            The printer sets what he is given and knows nothing of any carts.
+                        </p>
+
+                        <span class="hand">
+                            — found folded in a coat pocket, much creased,<br>
+                            with the fourth stanza scored through twice
+                        </span>
+
+                    </div>
+                </main>
+
+                <footer role="contentinfo"
+                    style="margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border-ornate); opacity: 0.4; text-align: center;">
+                    <div class="footer-decorations" aria-hidden="true">
+                        <span class="footer-line"></span>
+                        <img src="../assets/seal.png" alt="" class="wax-seal"
+                            style="width: 40px; height: 40px; opacity: 0.6;">
+                        <span class="footer-line"></span>
+                    </div>
+                    <p style="color: var(--text-aged); font-size: 0.9em; margin-top: 20px;">Imperial Grayhawk Campaign
+                        Archive</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
